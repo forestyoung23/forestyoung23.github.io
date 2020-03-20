@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Java数字金额大写转换 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Java数字金额大写转换">
+<meta property="og:url" content="http://yoursite.com/2019/03/17/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D%E5%A4%A7%E5%86%99%E8%BD%AC%E6%8D%A2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/uploads/rw01.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/17/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D%E5%A4%A7%E5%86%99%E8%BD%AC%E6%8D%A2/%5Cuploads%5Cjava%E9%87%91%E9%A2%9D%E5%A4%A7%E5%86%99.png">
+<meta property="article:published_time" content="2019-03-17T14:41:51.000Z">
+<meta property="article:modified_time" content="2020-03-19T14:34:55.177Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="工具类">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/uploads/rw01.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java数字金额大写转换" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/17/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D%E5%A4%A7%E5%86%99%E8%BD%AC%E6%8D%A2/" class="article-date">
+  <time datetime="2019-03-17T14:41:51.000Z" itemprop="datePublished">2019-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java数字金额大写转换
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <img src="/uploads/rw01.jpg"/>
+<a id="more"></a>
+
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>在工作中遇到结算单报表打印的需求，需要展示中文大写金额，为赶时间首先当然是google了(真实情况是觉得自己水平不够，写出来的util会有问题)</p>
+<h3 id="最初（来自CSDN，看到的也是转载贴，未注明出处，侵删）"><a href="#最初（来自CSDN，看到的也是转载贴，未注明出处，侵删）" class="headerlink" title="最初（来自CSDN，看到的也是转载贴，未注明出处，侵删）"></a>最初（来自CSDN，看到的也是转载贴，未注明出处，侵删）</h3><p>其实这种工具类网上有很多，但个人感觉这个逻辑更加清晰，所以后面都是在这版的基础是进行修改</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConvertNumberToUpper</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 数字金额大写转换，思想先写个完整的然后将如零拾替换成零 要用到正则表达式</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">digitUppercase</span><span class="params">(<span class="keyword">double</span> n)</span> </span>&#123;</span><br><span class="line">        String fraction[] = &#123;<span class="string">"角"</span>, <span class="string">"分"</span>&#125;;</span><br><span class="line">        String digit[] = &#123;<span class="string">"零"</span>, <span class="string">"壹"</span>, <span class="string">"贰"</span>, <span class="string">"叁"</span>, <span class="string">"肆"</span>, <span class="string">"伍"</span>, <span class="string">"陆"</span>, <span class="string">"柒"</span>, <span class="string">"捌"</span>, <span class="string">"玖"</span>&#125;;</span><br><span class="line">        String unit[][] = &#123;&#123;<span class="string">"元"</span>, <span class="string">"万"</span>, <span class="string">"亿"</span>&#125;, &#123;<span class="string">""</span>, <span class="string">"拾"</span>, <span class="string">"佰"</span>, <span class="string">"仟"</span>&#125;&#125;;</span><br><span class="line">        String head = n &lt; <span class="number">0</span> ? <span class="string">"负"</span> : <span class="string">""</span>;</span><br><span class="line">        <span class="comment">// 如果是负数取绝对值</span></span><br><span class="line">        n = Math.abs(n);</span><br><span class="line">        <span class="comment">// 小数部分</span></span><br><span class="line">        String s = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fraction.length; i++) &#123;</span><br><span class="line">            <span class="comment">// Math.floor(a)返回大于或等于参数的最小（最接近负无穷大） double值，并等于数学整数，Math.pow(10, i)10的i次幂</span></span><br><span class="line">            s += (digit[(<span class="keyword">int</span>)(Math.floor(n * Math.pow(<span class="number">10</span>, i + <span class="number">1</span>)) % <span class="number">10</span>)] + fraction[i]).replaceAll(<span class="string">"(零.)+"</span>, <span class="string">""</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s.length() &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            s = <span class="string">"整"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> integerPart = (<span class="keyword">int</span>)Math.floor(n);</span><br><span class="line">        <span class="comment">// 整数部分</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; unit[<span class="number">0</span>].length &amp;&amp; integerPart &gt; <span class="number">0</span>; i++) &#123;</span><br><span class="line">            String p = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; unit[<span class="number">1</span>].length &amp;&amp; n &gt; <span class="number">0</span>; j++) &#123;</span><br><span class="line">                p = digit[integerPart % <span class="number">10</span>] + unit[<span class="number">1</span>][j] + p;</span><br><span class="line">                integerPart = integerPart / <span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            s = p.replaceAll(<span class="string">"(零.)*零$"</span>, <span class="string">""</span>).replaceAll(<span class="string">"^$"</span>, <span class="string">"零"</span>) + unit[<span class="number">0</span>][i] + s;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head + s.replaceAll(<span class="string">"(零.)*零元"</span>, <span class="string">"元"</span>).replaceFirst(<span class="string">"(零.)+"</span>, <span class="string">""</span>).replaceAll(<span class="string">"(零.)+"</span>, <span class="string">"零"</span>).replaceAll(<span class="string">"^整$"</span>, <span class="string">"零元整"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>自己测试发现能满足业务需要，所以就直接拿来主义了！</p>
+<p>后面自己review时发现原贴下面的一条评论是这样的</p>
+<blockquote>
+<p>Math.floor(n * 10 * Math.pow(10, i)) % 10)第一个方法里面，是否会因为double*10精度问题进行取整导致数据不正确？ 比如40899.84 * 10的double值408998.39999999….向下取整只会取到3，正好碰到了这个问题</p>
+</blockquote>
+<p>通过mian方法测试发现确实存在这个问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 这里使用System.err与System.out没有区别，只是会用红色字体显示，可以很清晰的看出与日志的区别，强烈建议在测试的时候使用</span></span><br><span class="line">    System.err.println(digitUppercase(<span class="number">40899.84</span>));</span><br><span class="line">&#125;</span><br><span class="line">输出结果:肆万零捌佰玖拾玖元捌角叁分</span><br></pre></td></tr></table></figure>
+
+<p>原因：Java中浮点类型运算会产生精度问题(二进制浮点运算引起)</p>
+<p>尝试解决问题，思路是既然只有小数部分有问题就把小数部分截取后转换成整数处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConvertNumberToUpper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">digitCapital</span><span class="params">(<span class="keyword">double</span> n)</span> </span>&#123;</span><br><span class="line">        String fraction[] = &#123;<span class="string">"角"</span>, <span class="string">"分"</span>&#125;;</span><br><span class="line">        String digit[] = &#123;<span class="string">"零"</span>, <span class="string">"壹"</span>, <span class="string">"贰"</span>, <span class="string">"叁"</span>, <span class="string">"肆"</span>, <span class="string">"伍"</span>, <span class="string">"陆"</span>, <span class="string">"柒"</span>, <span class="string">"捌"</span>, <span class="string">"玖"</span>&#125;;</span><br><span class="line">        String unit[][] = &#123;&#123;<span class="string">"元"</span>, <span class="string">"万"</span>, <span class="string">"亿"</span>&#125;, &#123;<span class="string">""</span>, <span class="string">"拾"</span>, <span class="string">"佰"</span>, <span class="string">"仟"</span>&#125;&#125;;</span><br><span class="line">	</span><br><span class="line">        String head = n &lt; <span class="number">0</span> ? <span class="string">"负"</span> : <span class="string">""</span>;</span><br><span class="line">        <span class="comment">// 如果是负数取绝对值</span></span><br><span class="line">        n = Math.abs(n);</span><br><span class="line">        String s = <span class="string">""</span>;</span><br><span class="line">        <span class="comment">// 由于n为double类型，所以整数如100转换后变为100.0</span></span><br><span class="line">        String nStr = n + <span class="string">""</span>;</span><br><span class="line">        <span class="comment">// 小数部分，小数点为特殊符号，在分割时需进行转义</span></span><br><span class="line">        String split = nStr.split(<span class="string">"\\."</span>)[<span class="number">1</span>];</span><br><span class="line">		<span class="comment">// 如果小数部分只有一位且为0，直接舍弃</span></span><br><span class="line">        <span class="keyword">if</span> (!(split.length() == <span class="number">1</span> &amp;&amp; <span class="string">"0"</span>.equals(split))) &#123;</span><br><span class="line">			<span class="comment">// 只精确到小数点后两位</span></span><br><span class="line">            <span class="keyword">if</span> (split.length() &gt; <span class="number">2</span>) &#123;</span><br><span class="line">                split = split.substring(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 将小数部分转换为整数</span></span><br><span class="line">            Integer integer = Integer.valueOf(split);</span><br><span class="line">            String p = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; split.length() &amp;&amp; i &lt; fraction.length; i++) &#123;</span><br><span class="line">                p = digit[integer % <span class="number">10</span>] + fraction[split.length() - i - <span class="number">1</span>] + p;</span><br><span class="line">                integer = integer / <span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            s = p.replaceAll(<span class="string">"(零.)+"</span>, <span class="string">""</span>) + s;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s.length() &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            s = <span class="string">"整"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> integerPart = (<span class="keyword">int</span>)Math.floor(n);</span><br><span class="line">        <span class="comment">// 整数部分</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; unit[<span class="number">0</span>].length &amp;&amp; integerPart &gt; <span class="number">0</span>; i++) &#123;</span><br><span class="line">            String p = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; unit[<span class="number">1</span>].length &amp;&amp; n &gt; <span class="number">0</span>; j++) &#123;</span><br><span class="line">                p = digit[integerPart % <span class="number">10</span>] + unit[<span class="number">1</span>][j] + p;</span><br><span class="line">                integerPart = integerPart / <span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            s = p.replaceAll(<span class="string">"(零.)*零$"</span>, <span class="string">""</span>).replaceAll(<span class="string">"^$"</span>, <span class="string">"零"</span>) + unit[<span class="number">0</span>][i] + s;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head + s.replaceAll(<span class="string">"(零.)*零元"</span>, <span class="string">"元"</span>).replaceFirst(<span class="string">"(零.)+"</span>, <span class="string">""</span>).replaceAll(<span class="string">"(零.)+"</span>, <span class="string">"零"</span>).replaceAll(<span class="string">"^整$"</span>, <span class="string">"零元整"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试发现解决了上面的问题</p>
+<p>然而又发现新的问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    System.err.println(digitCapital(<span class="number">40800099.84</span>));</span><br><span class="line">&#125;</span><br><span class="line">输出结果:肆仟捌拾万零玖拾玖元捌分</span><br></pre></td></tr></table></figure>
+
+<p>这是因为java中对过大的数据采用科学计数法表示，debug会发现传到方法中的n已经变为<code>4.080009984E7</code></p>
+<p><img src="%5Cuploads%5Cjava%E9%87%91%E9%A2%9D%E5%A4%A7%E5%86%99.png" alt="java金额大写"></p>
+<p>然后就是解决问题了，思路就是不使用科学计数法表示数据</p>
+<p>查资料发现有两种方式实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一</span></span><br><span class="line">NumberFormat nf = NumberFormat.getInstance();</span><br><span class="line">nf.setGroupingUsed(<span class="keyword">false</span>);</span><br><span class="line">String nStr = nf.format(n);</span><br><span class="line"><span class="comment">//方法二</span></span><br><span class="line">BigDecimal bigDecimal = <span class="keyword">new</span> BigDecimal(Double.valueOf(n).toString());</span><br><span class="line">String nStr = bigDecimal.toString();</span><br></pre></td></tr></table></figure>
+
+<p>通过下面简单测试，发现方法二的效率明显要好于方法一</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">digitCapital</span><span class="params">(<span class="keyword">double</span> n)</span> </span>&#123;</span><br><span class="line">    String fraction[] = &#123;<span class="string">"角"</span>, <span class="string">"分"</span>&#125;;</span><br><span class="line">    String digit[] = &#123;<span class="string">"零"</span>, <span class="string">"壹"</span>, <span class="string">"贰"</span>, <span class="string">"叁"</span>, <span class="string">"肆"</span>, <span class="string">"伍"</span>, <span class="string">"陆"</span>, <span class="string">"柒"</span>, <span class="string">"捌"</span>, <span class="string">"玖"</span>&#125;;</span><br><span class="line">    String unit[][] = &#123;&#123;<span class="string">"元"</span>, <span class="string">"万"</span>, <span class="string">"亿"</span>&#125;, &#123;<span class="string">""</span>, <span class="string">"拾"</span>, <span class="string">"佰"</span>, <span class="string">"仟"</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">    String head = n &lt; <span class="number">0</span> ? <span class="string">"负"</span> : <span class="string">""</span>;</span><br><span class="line">    <span class="comment">// 如果是负数取绝对值</span></span><br><span class="line">    n = Math.abs(n);</span><br><span class="line">    String s = <span class="string">""</span>;</span><br><span class="line">    BigDecimal bigDecimal = <span class="keyword">new</span> BigDecimal(Double.valueOf(n).toString());</span><br><span class="line">    String nStr = bigDecimal.toString();</span><br><span class="line">    <span class="comment">// NumberFormat nf = NumberFormat.getInstance();</span></span><br><span class="line">    <span class="comment">// nf.setGroupingUsed(false);</span></span><br><span class="line">    <span class="comment">// String nStr = nf.format(n);</span></span><br><span class="line">    <span class="comment">// 由于n为double类型，所以整数如100转换后变为100.0</span></span><br><span class="line">    <span class="comment">// 小数部分</span></span><br><span class="line">    String[] split = nStr.split(<span class="string">"\\."</span>);</span><br><span class="line">    <span class="keyword">if</span> (split.length &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">// 小数点为特殊符号，在分割时需进行转义</span></span><br><span class="line">        String decimalStr = split[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (decimalStr.length() &gt; <span class="number">2</span>) &#123;</span><br><span class="line">            decimalStr = decimalStr.substring(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 将小数部分转换为整数</span></span><br><span class="line">        Integer integer = Integer.valueOf(decimalStr);</span><br><span class="line">        String p = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; decimalStr.length() &amp;&amp; i &lt; fraction.length; i++) &#123;</span><br><span class="line">            p = digit[integer % <span class="number">10</span>] + fraction[decimalStr.length() - i - <span class="number">1</span>] + p;</span><br><span class="line">            integer = integer / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        s = p.replaceAll(<span class="string">"(零.)+"</span>, <span class="string">""</span>) + s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (s.length() &lt; <span class="number">1</span>) &#123;</span><br><span class="line">        s = <span class="string">"整"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> integerPart = (<span class="keyword">int</span>)Math.floor(n);</span><br><span class="line">    <span class="comment">// 整数部分</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; unit[<span class="number">0</span>].length &amp;&amp; integerPart &gt; <span class="number">0</span>; i++) &#123;</span><br><span class="line">        String p = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; unit[<span class="number">1</span>].length &amp;&amp; n &gt; <span class="number">0</span>; j++) &#123;</span><br><span class="line">            p = digit[integerPart % <span class="number">10</span>] + unit[<span class="number">1</span>][j] + p;</span><br><span class="line">            integerPart = integerPart / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        s = p.replaceAll(<span class="string">"(零.)*零$"</span>, <span class="string">""</span>).replaceAll(<span class="string">"^$"</span>, <span class="string">"零"</span>) + unit[<span class="number">0</span>][i] + s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head + s.replaceAll(<span class="string">"(零.)*零元"</span>, <span class="string">"元"</span>).replaceFirst(<span class="string">"(零.)+"</span>, <span class="string">""</span>).replaceAll(<span class="string">"(零.)+"</span>, <span class="string">"零"</span>).replaceAll(<span class="string">"^整$"</span>, <span class="string">"零元整"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> t1 = System.currentTimeMillis();</span><br><span class="line">    System.err.println(digitCapital(<span class="number">1234340899.011231</span>));</span><br><span class="line">    <span class="keyword">long</span> t2 = System.currentTimeMillis();</span><br><span class="line">    System.err.println(t2 - t1);</span><br><span class="line">    <span class="keyword">long</span> t3 = System.currentTimeMillis();</span><br><span class="line">    System.err.println(digitCapital(<span class="number">1234340899.011231</span>));</span><br><span class="line">    <span class="keyword">long</span> t4 = System.currentTimeMillis();</span><br><span class="line">    System.err.println(t4 - t3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="最终版"><a href="#最终版" class="headerlink" title="最终版"></a>最终版</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">digitCapital</span><span class="params">(<span class="keyword">double</span> n)</span> </span>&#123;</span><br><span class="line">    String fraction[] = &#123;<span class="string">"角"</span>, <span class="string">"分"</span>&#125;;</span><br><span class="line">    String digit[] = &#123;<span class="string">"零"</span>, <span class="string">"壹"</span>, <span class="string">"贰"</span>, <span class="string">"叁"</span>, <span class="string">"肆"</span>, <span class="string">"伍"</span>, <span class="string">"陆"</span>, <span class="string">"柒"</span>, <span class="string">"捌"</span>, <span class="string">"玖"</span>&#125;;</span><br><span class="line">    String unit[][] = &#123;&#123;<span class="string">"元"</span>, <span class="string">"万"</span>, <span class="string">"亿"</span>&#125;, &#123;<span class="string">""</span>, <span class="string">"拾"</span>, <span class="string">"佰"</span>, <span class="string">"仟"</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">    String head = n &lt; <span class="number">0</span> ? <span class="string">"负"</span> : <span class="string">""</span>;</span><br><span class="line">    <span class="comment">// 如果是负数取绝对值</span></span><br><span class="line">    n = Math.abs(n);</span><br><span class="line">    String s = <span class="string">""</span>;</span><br><span class="line">    BigDecimal bigDecimal = <span class="keyword">new</span> BigDecimal(Double.valueOf(n).toString());</span><br><span class="line">    String nStr = bigDecimal.toString();</span><br><span class="line">    <span class="comment">// 小数部分</span></span><br><span class="line">    String[] split = nStr.split(<span class="string">"\\."</span>);</span><br><span class="line">    <span class="keyword">if</span> (split.length &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">// 小数点为特殊符号，在分割时需进行转义</span></span><br><span class="line">        String decimalStr = split[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (decimalStr.length() &gt; <span class="number">2</span>) &#123;</span><br><span class="line">            decimalStr = decimalStr.substring(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 将小数部分转换为整数</span></span><br><span class="line">        Integer integer = Integer.valueOf(decimalStr);</span><br><span class="line">        String p = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; decimalStr.length() &amp;&amp; i &lt; fraction.length; i++) &#123;</span><br><span class="line">            p = digit[integer % <span class="number">10</span>] + fraction[decimalStr.length() - i - <span class="number">1</span>] + p;</span><br><span class="line">            integer = integer / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        s = p.replaceAll(<span class="string">"(零.)+"</span>, <span class="string">""</span>) + s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (s.length() &lt; <span class="number">1</span>) &#123;</span><br><span class="line">        s = <span class="string">"整"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> integerPart = (<span class="keyword">int</span>)Math.floor(n);</span><br><span class="line">    <span class="comment">// 整数部分</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; unit[<span class="number">0</span>].length &amp;&amp; integerPart &gt; <span class="number">0</span>; i++) &#123;</span><br><span class="line">        String p = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; unit[<span class="number">1</span>].length &amp;&amp; n &gt; <span class="number">0</span>; j++) &#123;</span><br><span class="line">            p = digit[integerPart % <span class="number">10</span>] + unit[<span class="number">1</span>][j] + p;</span><br><span class="line">            integerPart = integerPart / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        s = p.replaceAll(<span class="string">"(零.)*零$"</span>, <span class="string">""</span>).replaceAll(<span class="string">"^$"</span>, <span class="string">"零"</span>) + unit[<span class="number">0</span>][i] + s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head + s.replaceAll(<span class="string">"(零.)*零元"</span>, <span class="string">"元"</span>).replaceFirst(<span class="string">"(零.)+"</span>, <span class="string">""</span>).replaceAll(<span class="string">"(零.)+"</span>, <span class="string">"零"</span>).replaceAll(<span class="string">"^整$"</span>, <span class="string">"零元整"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>:Integer的取值范围是从-2147483648 至 214748364，超过该范围就会按最大值计算</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/17/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D%E5%A4%A7%E5%86%99%E8%BD%AC%E6%8D%A2/" data-id="ck80dqacr0000irgrcfm27prf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" rel="tag">工具类</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/07/%E8%8E%B7%E5%8F%96%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%B4%E6%97%B6%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AESTStoken/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">获取阿里云临时授权访问STStoken</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" rel="tag">工具类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag">阿里云</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/" style="font-size: 10px;">工具类</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 10px;">阿里云</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/17/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D%E5%A4%A7%E5%86%99%E8%BD%AC%E6%8D%A2/">Java数字金额大写转换</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/07/%E8%8E%B7%E5%8F%96%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%B4%E6%97%B6%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AESTStoken/">获取阿里云临时授权访问STStoken</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/13/http%E7%8A%B6%E6%80%81%E7%A0%81/">http状态码</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
