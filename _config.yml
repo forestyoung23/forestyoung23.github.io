@@ -101,6 +101,3 @@ deploy:
   - type: git
     repo: root@120.78.214.130:blog.git
     branch: master
-  - type: git
-    repo: git@github.com:forestyoung23/forestyoung23.github.io.git
-    branch: master
