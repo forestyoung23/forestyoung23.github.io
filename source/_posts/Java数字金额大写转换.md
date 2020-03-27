@@ -4,7 +4,7 @@ date: 2019-03-17 22:41:51
 tags: 工具类
 ---
 
-<img src="/uploads/rw01.jpg"/>
+![](http://oss.forestyoung.top/Java数字金额.jpg)
 <!--more-->
 
 ### 背景

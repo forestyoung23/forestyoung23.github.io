@@ -4,7 +4,7 @@ date: 2019-02-13 10:42:17
 tags: HTTP
 ---
 
-<img src="/uploads/kj02.jpg"/>
+![](http://oss.forestyoung.top/http状态码.jpg)
 <!--more-->
 
 100——客户必须继续发出请求

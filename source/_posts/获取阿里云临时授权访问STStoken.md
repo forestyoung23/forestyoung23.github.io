@@ -4,7 +4,7 @@ date: 2019-03-07 20:06:24
 tags: 阿里云
 ---
 
-<img src="/uploads/sc01.jpg"/>
+![](http://oss.forestyoung.top/获取STStoken.jpg)
 <!--more-->
 
 [阿里云官方文档](https://www.alibabacloud.com/help/zh/doc-detail/27364.htm?spm=a2c63.p38356.b99.35.5c778d840l5Eaw)
