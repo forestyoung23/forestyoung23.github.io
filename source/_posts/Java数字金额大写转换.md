@@ -131,7 +131,7 @@ public static void main(String[] args) {
 
 这是因为java中对过大的数据采用科学计数法表示，debug会发现传到方法中的n已经变为`4.080009984E7`
 
-![java金额大写](\uploads\java金额大写.png)
+<img src="http://oss.forestyoung.top/Java数字金额(1).png"/>
 
 然后就是解决问题了，思路就是不使用科学计数法表示数据
 
