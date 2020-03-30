@@ -85,9 +85,9 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://oss.forestyoung.top/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/03/17/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D%E5%A4%A7%E5%86%99%E8%BD%AC%E6%8D%A2/%5Cuploads%5Cjava%E9%87%91%E9%A2%9D%E5%A4%A7%E5%86%99.png">
+<meta property="og:image" content="http://oss.forestyoung.top/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D(1).png">
 <meta property="article:published_time" content="2019-03-17T14:41:51.000Z">
-<meta property="article:modified_time" content="2020-03-27T03:41:54.343Z">
+<meta property="article:modified_time" content="2020-03-30T01:31:55.018Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="工具类">
 <meta name="twitter:card" content="summary">
@@ -325,7 +325,8 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    System.err.println(digitCapital(<span class="number">40800099.84</span>));</span><br><span class="line">&#125;</span><br><span class="line">输出结果:肆仟捌拾万零玖拾玖元捌分</span><br></pre></td></tr></table></figure>
 
 <p>这是因为java中对过大的数据采用科学计数法表示，debug会发现传到方法中的n已经变为<code>4.080009984E7</code></p>
-<p><img src="%5Cuploads%5Cjava%E9%87%91%E9%A2%9D%E5%A4%A7%E5%86%99.png" alt="java金额大写"></p>
+<img src="http://oss.forestyoung.top/Java数字金额(1).png"/>
+
 <p>然后就是解决问题了，思路就是不使用科学计数法表示数据</p>
 <p>查资料发现有两种方式实现</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一</span></span><br><span class="line">NumberFormat nf = NumberFormat.getInstance();</span><br><span class="line">nf.setGroupingUsed(<span class="keyword">false</span>);</span><br><span class="line">String nStr = nf.format(n);</span><br><span class="line"><span class="comment">//方法二</span></span><br><span class="line">BigDecimal bigDecimal = <span class="keyword">new</span> BigDecimal(Double.valueOf(n).toString());</span><br><span class="line">String nStr = bigDecimal.toString();</span><br></pre></td></tr></table></figure>
