@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/05/09/Hadoop%E5%AE%89%E8%A3%85/" itemprop="url">Hadoop安装</a></h1>
+                <a class="post-title-link" href="/2020/05/09/Hadoop%E5%AE%89%E8%A3%85/" itemprop="url">Hadoop</a></h1>
         
 
         <div class="post-meta">
@@ -260,7 +260,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-09T00:35:41+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-09T00:45:41+08:00">
                 2020-05-09
               </time>
             
@@ -299,22 +299,14 @@
 
       
         
-          
-            <h2 id="Hadoop安装"><a href="#Hadoop安装" class="headerlink" title="Hadoop安装"></a>Hadoop安装</h2><h3 id="jdk安装"><a href="#jdk安装" class="headerlink" title="jdk安装"></a>jdk安装</h3><p>系统：CentOS</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看yum包含的jdk版本</span></span><br><span class="line">[root@ ~]# yum search java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装JDK</span></span><br><span class="line">[root@ ~]# yum install java-1.8.0-openjdk-devel.x86_64</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量前，需要定位到jdk安装目录</span></span><br><span class="line">[root@ ~]# which java</span><br><span class="line">/usr/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 再找到/usr/bin/java的超链接位置发现还是超链接</span></span><br><span class="line">[root@ ~]# ls -lrt /usr/bin/java</span><br><span class="line">/usr/bin/java -&gt; /etc/alternatives/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 对超链接再次查询，发现最终位置</span></span><br><span class="line">[root@ ~]# ls -lrt /etc/alternatives/java</span><br><span class="line">/etc/alternatives/java -&gt; /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/jre/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量</span></span><br><span class="line">[root@ ~]# vim /etc/profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置下列信息，JAVA_HOME需要配置为刚查询出来的jdk目录</span></span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使配置生效</span></span><br><span class="line">[root@ ~]# source /etc/profile</span><br></pre></td></tr></table></figure>
-
-<h3 id="Hadoop安装-1"><a href="#Hadoop安装-1" class="headerlink" title="Hadoop安装"></a>Hadoop安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下载包</span></span><br><span class="line">[root@ ~]# wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line">[root@ ~]# tar -zxvf hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置</span></span><br><span class="line">[root@ ~]# cd /hadoop-3.1.3/etc/hadoop</span><br><span class="line"><span class="meta">#</span><span class="bash"> 三个配置文件配置core-site.xml，hdfs-site.xml，mapred-site.xml</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Hadoop运行模式"><a href="#Hadoop运行模式" class="headerlink" title="Hadoop运行模式"></a>Hadoop运行模式</h2><ul>
-<li>本地模式</li>
-<li>伪分布式</li>
-<li>完全分布式</li>
-<li></li>
-</ul>
-
-          
+          <p><img src="http://oss.forestyoung.top/river-5134258_1920.jpg" alt=""></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/09/Hadoop%E5%AE%89%E8%A3%85/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -361,7 +353,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/21/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%92%8CHadoop%E6%A6%82%E8%BF%B0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%92%8CHadoop%E6%A6%82%E8%BF%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -380,7 +372,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/21/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%92%8CHadoop%E6%A6%82%E8%BF%B0/" itemprop="url">大数据和Hadoop概述</a></h1>
+                <a class="post-title-link" href="/2020/05/09/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%92%8CHadoop%E6%A6%82%E8%BF%B0/" itemprop="url">大数据和Hadoop概述</a></h1>
         
 
         <div class="post-meta">
@@ -392,8 +384,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-21T00:20:28+08:00">
-                2020-04-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-09T00:40:25+08:00">
+                2020-05-09
               </time>
             
 
@@ -431,72 +423,14 @@
 
       
         
-          
-            <h2 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><blockquote>
-<p>大数据：指无法在一定时间范围内用常规软件工具进行捕捉、管理和处理的数据集合，是需要新处理模式才能具有更强的决策力、洞察发现力和流程优化能力的海量、高增长率和多样化的信息资产。</p>
-</blockquote>
-<h3 id="大数据部门组织结构"><a href="#大数据部门组织结构" class="headerlink" title="大数据部门组织结构"></a>大数据部门组织结构</h3><p>![](<a href="http://oss.forestyoung.top/截屏2020-04-19" target="_blank" rel="noopener">http://oss.forestyoung.top/截屏2020-04-19</a> 下午5.40.17.png)</p>
-<h3 id="大数据技术生态体系"><a href="#大数据技术生态体系" class="headerlink" title="大数据技术生态体系"></a>大数据技术生态体系</h3><p>![](<a href="http://oss.forestyoung.top/截屏2020-05-09" target="_blank" rel="noopener">http://oss.forestyoung.top/截屏2020-05-09</a> 上午12.30.49.png)</p>
-<ul>
-<li><p>Sqoop：Sqoop是一款开源的工具，主要用于在Hadoop、Hive与传统的数据库(MySql)间进行数据的传递，可以将一个关系型数据库（例如 ：MySQL，Oracle 等）中的数据导进到Hadoop的HDFS中，也可以将HDFS的数据导进到关系型数据库中。</p>
-</li>
-<li><p>Flume：Flume是Cloudera提供的一个高可用的，高可靠的，分布式的海量日志采集、聚合和传输的系统，Flume支持在日志系统中定制各类数据发送方，用于收集数据；同时，Flume提供对数据进行简单处理，并写到各种数据接受方（可定制）的能力。</p>
-</li>
-<li><p>Kafka：Kafka是一种高吞吐量的分布式发布订阅消息系统，有如下特性：</p>
-<ol>
-<li><p>通过O(1)的磁盘数据结构提供消息的持久化，这种结构对于即使数以TB的消息存储也能够保持长时间的稳定性能。</p>
-</li>
-<li><p>高吞吐量：即使是非常普通的硬件Kafka也可以支持每秒数百万的消息。</p>
-</li>
-<li><p>支持通过Kafka服务器和消费机集群来分区消息。</p>
-</li>
-<li><p>支持Hadoop并行数据加载。</p>
-</li>
-</ol>
-</li>
-<li><p>Storm：Storm用于“连续计算”，对数据流做连续查询，在计算时就将结果以流的形式输出给用户。</p>
-</li>
-<li><p>Spark：Spark是当前最流行的开源大数据内存计算框架。可以基于Hadoop上存储的大数据进行计算</p>
-</li>
-<li><p>Oozie：Oozie是一个管理Hdoop作业（job）的工作流程调度管理系统。</p>
-</li>
-<li><p>Hbase：HBase是一个分布式的、面向列的开源数据库。HBase不同于一般的关系数据库，它是一个适合于非结构化数据存储的数据库。</p>
-</li>
-<li><p>Hive：Hive是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，并提供简单的SQL查询功能，可以将SQL语句转换为MapReduce任务进行运行。 其优点是学习成本低，可以通过类SQL语句快速实现简单的MapReduce统计，不必开发专门的MapReduce应用，十分适合数据仓库的统计分析。</p>
-</li>
-<li><p>R语言：R是用于统计分析、绘图的语言和操作环境。R是属于GNU系统的一个自由、免费、源代码开放的软件，它是一个用于统计计算和统计制图的优秀工具。</p>
-</li>
-<li><p>Mahout：Apache Mahout是个可扩展的机器学习和数据挖掘库。</p>
-</li>
-<li><p>ZooKeeper：Zookeeper是Google的Chubby一个开源的实现。它是一个针对大型分布式系统的可靠协调系统，提供的功能包括：配置维护、名字服务、 分布式同步、组服务等。ZooKeeper的目标就是封装好复杂易出错的关键服务，将简单易用的接口和性能高效、功能稳定的系统提供给用户。</p>
-</li>
-</ul>
-<h3 id="推荐系统框架图"><a href="#推荐系统框架图" class="headerlink" title="推荐系统框架图"></a>推荐系统框架图</h3><p>![](<a href="http://oss.forestyoung.top/截屏2020-05-09" target="_blank" rel="noopener">http://oss.forestyoung.top/截屏2020-05-09</a> 上午12.34.41.png)</p>
-<h2 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h2><h3 id="Hadoop简介"><a href="#Hadoop简介" class="headerlink" title="Hadoop简介"></a>Hadoop简介</h3><ul>
-<li>Hadoop是一个由Apache基金会所开发的分布式系统基础架构</li>
-<li>主要解决，海量数据的存储和海量数据的分析计算问题</li>
-<li>广义上来说，Hadoop通常是指一个更广泛的概念——-Hadoop生态圈</li>
-</ul>
-<h3 id="Hadoop三大发行版本"><a href="#Hadoop三大发行版本" class="headerlink" title="Hadoop三大发行版本"></a>Hadoop三大发行版本</h3><ul>
-<li>Apache:最原始最基础版本，对于入门学习最好</li>
-<li>Cloudera:在大型互联网企业中用的较多</li>
-<li>Hortonworks:文档较好</li>
-</ul>
-<h3 id="Hadoop的优势"><a href="#Hadoop的优势" class="headerlink" title="Hadoop的优势"></a>Hadoop的优势</h3><ul>
-<li>高可靠性：Hadoop底层维护多个数据副本，所以即使Hadoop某个计算元素或存储出现故障，也不会导致数据的丢失。</li>
-<li>高扩展性：在集群间分配任务数据，可方便的扩展数以千计的节点。</li>
-<li>高效性：在MapReduce的思想下，Hadoop是并行工作的，以加快任务处理速度。</li>
-<li>高容错性：能够自动将失败的任务重新分配。</li>
-</ul>
-<h3 id="Hadoop的组成"><a href="#Hadoop的组成" class="headerlink" title="Hadoop的组成"></a>Hadoop的组成</h3><p>![](<a href="http://oss.forestyoung.top/截屏2020-05-09" target="_blank" rel="noopener">http://oss.forestyoung.top/截屏2020-05-09</a> 上午12.28.08.png)</p>
-<p>包括两个核心组成：</p>
-<blockquote>
-<p>HDFS:分布式文件系统，存储海量的数据</p>
-<p>MapReduce：并行处理框架，实现任务分解和调度</p>
-</blockquote>
-<h3 id="Hadoop可以用来做什么"><a href="#Hadoop可以用来做什么" class="headerlink" title="Hadoop可以用来做什么"></a>Hadoop可以用来做什么</h3><p>搭建大型数据仓库，PB级数据的存储、处理、分析、统计等业务</p>
-
-          
+          <p><img src="http://oss.forestyoung.top/outdoors-5129182_1920.jpg" alt=""></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/09/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%92%8CHadoop%E6%A6%82%E8%BF%B0/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1083,7 +1017,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
