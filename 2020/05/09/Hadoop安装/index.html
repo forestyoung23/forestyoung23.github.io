@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="HTTP," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,18 +79,17 @@
 
 
 
+<meta name="description" content="Hadoop安装jdk安装系统：CentOS 12345678910111213141516171819202122# 查看yum包含的jdk版本[root@ ~]# yum search java# 安装JDK[root@ ~]# yum install java-1.8.0-openjdk-devel.x86_64# 配置环境变量前，需要定位到jdk安装目录[root@ ~]# which j">
 <meta property="og:type" content="article">
-<meta property="og:title" content="http状态码">
-<meta property="og:url" content="http://yoursite.com/2019/02/13/http%E7%8A%B6%E6%80%81%E7%A0%81/index.html">
+<meta property="og:title" content="Hadoop安装">
+<meta property="og:url" content="http://yoursite.com/2020/05/09/Hadoop%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hadoop安装jdk安装系统：CentOS 12345678910111213141516171819202122# 查看yum包含的jdk版本[root@ ~]# yum search java# 安装JDK[root@ ~]# yum install java-1.8.0-openjdk-devel.x86_64# 配置环境变量前，需要定位到jdk安装目录[root@ ~]# which j">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://oss.forestyoung.top/http%E7%8A%B6%E6%80%81%E7%A0%81.jpg">
-<meta property="article:published_time" content="2019-02-13T02:42:17.000Z">
-<meta property="article:modified_time" content="2020-03-30T01:42:48.557Z">
+<meta property="article:published_time" content="2020-05-08T16:35:41.772Z">
+<meta property="article:modified_time" content="2020-05-08T16:35:41.772Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="HTTP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://oss.forestyoung.top/http%E7%8A%B6%E6%80%81%E7%A0%81.jpg">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/13/http状态码/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/05/09/Hadoop安装/"/>
 
 
 
 
 
-  <title>http状态码 | Hexo</title>
+  <title>Hadoop安装 | Hexo</title>
   
 
 
@@ -233,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/13/http%E7%8A%B6%E6%80%81%E7%A0%81/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/Hadoop%E5%AE%89%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -250,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">http状态码</h1>
+          <h1 class="post-title" itemprop="name headline">Hadoop安装</h1>
         
 
         <div class="post-meta">
@@ -262,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-13T10:42:17+08:00">
-                2019-02-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-09T00:35:41+08:00">
+                2020-05-09
               </time>
             
 
@@ -300,50 +299,19 @@
       
 
       
-        <p><img src="http://oss.forestyoung.top/http%E7%8A%B6%E6%80%81%E7%A0%81.jpg" alt=""></p>
-<a id="more"></a>
+        <h2 id="Hadoop安装"><a href="#Hadoop安装" class="headerlink" title="Hadoop安装"></a>Hadoop安装</h2><h3 id="jdk安装"><a href="#jdk安装" class="headerlink" title="jdk安装"></a>jdk安装</h3><p>系统：CentOS</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看yum包含的jdk版本</span></span><br><span class="line">[root@ ~]# yum search java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装JDK</span></span><br><span class="line">[root@ ~]# yum install java-1.8.0-openjdk-devel.x86_64</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量前，需要定位到jdk安装目录</span></span><br><span class="line">[root@ ~]# which java</span><br><span class="line">/usr/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 再找到/usr/bin/java的超链接位置发现还是超链接</span></span><br><span class="line">[root@ ~]# ls -lrt /usr/bin/java</span><br><span class="line">/usr/bin/java -&gt; /etc/alternatives/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 对超链接再次查询，发现最终位置</span></span><br><span class="line">[root@ ~]# ls -lrt /etc/alternatives/java</span><br><span class="line">/etc/alternatives/java -&gt; /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/jre/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量</span></span><br><span class="line">[root@ ~]# vim /etc/profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置下列信息，JAVA_HOME需要配置为刚查询出来的jdk目录</span></span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使配置生效</span></span><br><span class="line">[root@ ~]# source /etc/profile</span><br></pre></td></tr></table></figure>
 
-<p>100——客户必须继续发出请求</p>
-<p>101——客户要求服务器根据请求转换HTTP协议版本</p>
-<p>200——交易成功</p>
-<p>201——提示知道新文件的URL</p>
-<p>202——接受和处理、但处理未完成</p>
-<p>203——返回信息不确定或不完整</p>
-<p>204——请求收到，但返回信息为空</p>
-<p>205——服务器完成了请求，用户代理必须复位当前已经浏览过的文件</p>
-<p>206——服务器已经完成了部分用户的GET请求</p>
-<p>300——请求的资源可在多处得到</p>
-<p>301——删除请求数据</p>
-<p>302——在其他地址发现了请求数据</p>
-<p>303——建议客户访问其他URL或访问方式</p>
-<p>304——客户端已经执行了GET，但文件未变化</p>
-<p>305——请求的资源必须从服务器指定的地址得到</p>
-<p>306——前一版本HTTP中使用的代码，现行版本中不再使用</p>
-<p>307——申明请求的资源临时性删除</p>
-<p>400——错误请求，如语法错误</p>
-<p>401——请求授权失败</p>
-<p>402——保留有效ChargeTo头响应</p>
-<p>403——请求不允许</p>
-<p>404——没有发现文件、查询或URl</p>
-<p>405——用户在Request-Line字段定义的方法不允许</p>
-<p>406——根据用户发送的Accept拖，请求资源不可访问</p>
-<p>407——类似401，用户必须首先在代理服务器上得到授权</p>
-<p>408——客户端没有在用户指定的时间内完成请求</p>
-<p>409——对当前资源状态，请求不能完成</p>
-<p>410——服务器上不再有此资源且无进一步的参考地址</p>
-<p>411——服务器拒绝用户定义的Content-Length属性请求</p>
-<p>412——一个或多个请求头字段在当前请求中错误</p>
-<p>413——请求的资源大于服务器允许的大小</p>
-<p>414——请求的资源URL长于服务器允许的长度</p>
-<p>415——请求资源不支持请求项目格式</p>
-<p>416——请求中包含Range请求头字段，在当前请求资源范围内没有range指示值，请求也不包含If-Range请求头字段</p>
-<p>417——服务器不满足请求Expect头字段指定的期望值，如果是代理服务器，可能是下一级服务器不能满足请求</p>
-<p>500——服务器产生内部错误</p>
-<p>501——服务器不支持请求的函数</p>
-<p>502——服务器暂时不可用，有时是为了防止发生系统过载</p>
-<p>503——服务器过载或暂停维修</p>
-<p>504——关口过载，服务器使用另一个关口或服务来响应用户，等待时间设定值较长</p>
-<p>505——服务器不支持或拒绝支请求头中指定的HTTP版本</p>
+<h3 id="Hadoop安装-1"><a href="#Hadoop安装-1" class="headerlink" title="Hadoop安装"></a>Hadoop安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下载包</span></span><br><span class="line">[root@ ~]# wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line">[root@ ~]# tar -zxvf hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置</span></span><br><span class="line">[root@ ~]# cd /hadoop-3.1.3/etc/hadoop</span><br><span class="line"><span class="meta">#</span><span class="bash"> 三个配置文件配置core-site.xml，hdfs-site.xml，mapred-site.xml</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Hadoop运行模式"><a href="#Hadoop运行模式" class="headerlink" title="Hadoop运行模式"></a>Hadoop运行模式</h2><ul>
+<li>本地模式</li>
+<li>伪分布式</li>
+<li>完全分布式</li>
+<li></li>
+</ul>
 
       
     </div>
@@ -359,12 +327,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/HTTP/" rel="tag"># HTTP</a>
-          
-        </div>
-      
 
       
       
@@ -374,15 +336,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2020/04/21/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%92%8CHadoop%E6%A6%82%E8%BF%B0/" rel="next" title="大数据和Hadoop概述">
+                <i class="fa fa-chevron-left"></i> 大数据和Hadoop概述
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/07/%E8%8E%B7%E5%8F%96%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%B4%E6%97%B6%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AESTStoken/" rel="prev" title="获取阿里云临时授权访问STStoken">
-                获取阿里云临时授权访问STStoken <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -434,8 +396,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -486,6 +457,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop安装"><span class="nav-number">1.</span> <span class="nav-text">Hadoop安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jdk安装"><span class="nav-number">1.1.</span> <span class="nav-text">jdk安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hadoop安装-1"><span class="nav-number">1.2.</span> <span class="nav-text">Hadoop安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop运行模式"><span class="nav-number">2.</span> <span class="nav-text">Hadoop运行模式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
