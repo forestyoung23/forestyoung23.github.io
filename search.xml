@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hadoop</title>
+    <url>/2020/05/09/Hadoop%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<p><img src="http://oss.forestyoung.top/river-5134258_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<h3 id="jdk安装"><a href="#jdk安装" class="headerlink" title="jdk安装"></a>jdk安装</h3><p>系统：CentOS</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看yum包含的jdk版本</span></span><br><span class="line">[root@ ~]# yum search java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装JDK</span></span><br><span class="line">[root@ ~]# yum install java-1.8.0-openjdk-devel.x86_64</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量前，需要定位到jdk安装目录</span></span><br><span class="line">[root@ ~]# which java</span><br><span class="line">/usr/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 再找到/usr/bin/java的超链接位置发现还是超链接</span></span><br><span class="line">[root@ ~]# ls -lrt /usr/bin/java</span><br><span class="line">/usr/bin/java -&gt; /etc/alternatives/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 对超链接再次查询，发现最终位置</span></span><br><span class="line">[root@ ~]# ls -lrt /etc/alternatives/java</span><br><span class="line">/etc/alternatives/java -&gt; /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/jre/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量</span></span><br><span class="line">[root@ ~]# vim /etc/profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置下列信息，JAVA_HOME需要配置为刚查询出来的jdk目录</span></span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使配置生效</span></span><br><span class="line">[root@ ~]# source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="Hadoop安装"><a href="#Hadoop安装" class="headerlink" title="Hadoop安装"></a>Hadoop安装</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下载包</span></span><br><span class="line">[root@ ~]# wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line">[root@ ~]# tar -zxvf hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置</span></span><br><span class="line">[root@ ~]# cd /hadoop-3.1.3/etc/hadoop</span><br><span class="line"><span class="meta">#</span><span class="bash"> 三个配置文件配置core-site.xml，hdfs-site.xml，mapred-site.xml</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Hadoop运行模式"><a href="#Hadoop运行模式" class="headerlink" title="Hadoop运行模式"></a>Hadoop运行模式</h2><ul>
+<li>本地模式</li>
+<li>伪分布式</li>
+<li>完全分布式</li>
+<li></li>
+</ul>
+]]></content>
+      <categories>
+        <category>大数据</category>
+      </categories>
+      <tags>
+        <tag>Hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java数字金额大写转换</title>
     <url>/2019/03/17/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D%E5%A4%A7%E5%86%99%E8%BD%AC%E6%8D%A2/</url>
     <content><![CDATA[<p><img src="http://oss.forestyoung.top/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D.jpg" alt=""></p>
@@ -45,6 +72,61 @@
       </categories>
       <tags>
         <tag>工具类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>http状态码</title>
+    <url>/2019/02/13/http%E7%8A%B6%E6%80%81%E7%A0%81/</url>
+    <content><![CDATA[<p><img src="http://oss.forestyoung.top/http%E7%8A%B6%E6%80%81%E7%A0%81.jpg" alt=""></p>
+<a id="more"></a>
+
+<p>100——客户必须继续发出请求</p>
+<p>101——客户要求服务器根据请求转换HTTP协议版本</p>
+<p>200——交易成功</p>
+<p>201——提示知道新文件的URL</p>
+<p>202——接受和处理、但处理未完成</p>
+<p>203——返回信息不确定或不完整</p>
+<p>204——请求收到，但返回信息为空</p>
+<p>205——服务器完成了请求，用户代理必须复位当前已经浏览过的文件</p>
+<p>206——服务器已经完成了部分用户的GET请求</p>
+<p>300——请求的资源可在多处得到</p>
+<p>301——删除请求数据</p>
+<p>302——在其他地址发现了请求数据</p>
+<p>303——建议客户访问其他URL或访问方式</p>
+<p>304——客户端已经执行了GET，但文件未变化</p>
+<p>305——请求的资源必须从服务器指定的地址得到</p>
+<p>306——前一版本HTTP中使用的代码，现行版本中不再使用</p>
+<p>307——申明请求的资源临时性删除</p>
+<p>400——错误请求，如语法错误</p>
+<p>401——请求授权失败</p>
+<p>402——保留有效ChargeTo头响应</p>
+<p>403——请求不允许</p>
+<p>404——没有发现文件、查询或URl</p>
+<p>405——用户在Request-Line字段定义的方法不允许</p>
+<p>406——根据用户发送的Accept拖，请求资源不可访问</p>
+<p>407——类似401，用户必须首先在代理服务器上得到授权</p>
+<p>408——客户端没有在用户指定的时间内完成请求</p>
+<p>409——对当前资源状态，请求不能完成</p>
+<p>410——服务器上不再有此资源且无进一步的参考地址</p>
+<p>411——服务器拒绝用户定义的Content-Length属性请求</p>
+<p>412——一个或多个请求头字段在当前请求中错误</p>
+<p>413——请求的资源大于服务器允许的大小</p>
+<p>414——请求的资源URL长于服务器允许的长度</p>
+<p>415——请求资源不支持请求项目格式</p>
+<p>416——请求中包含Range请求头字段，在当前请求资源范围内没有range指示值，请求也不包含If-Range请求头字段</p>
+<p>417——服务器不满足请求Expect头字段指定的期望值，如果是代理服务器，可能是下一级服务器不能满足请求</p>
+<p>500——服务器产生内部错误</p>
+<p>501——服务器不支持请求的函数</p>
+<p>502——服务器暂时不可用，有时是为了防止发生系统过载</p>
+<p>503——服务器过载或暂停维修</p>
+<p>504——关口过载，服务器使用另一个关口或服务来响应用户，等待时间设定值较长</p>
+<p>505——服务器不支持或拒绝支请求头中指定的HTTP版本</p>
+]]></content>
+      <categories>
+        <category>API</category>
+      </categories>
+      <tags>
+        <tag>HTTP</tag>
       </tags>
   </entry>
   <entry>
@@ -107,138 +189,6 @@
       </categories>
       <tags>
         <tag>多线程问题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开发问题合集</title>
-    <url>/2020/05/16/%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/</url>
-    <content><![CDATA[<p><img src="http://oss.forestyoung.top/tunnel-5122424_1920.jpg" alt=""></p>
-<a id="more"></a>
-
-<h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p><a href="https://juejin.im/post/5d9c4c1bf265da5b5d2047a2" target="_blank" rel="noopener">阿里云自建图床</a></p>
-]]></content>
-      <categories>
-        <category>开发问题</category>
-      </categories>
-      <tags>
-        <tag>其它</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>http状态码</title>
-    <url>/2019/02/13/http%E7%8A%B6%E6%80%81%E7%A0%81/</url>
-    <content><![CDATA[<p><img src="http://oss.forestyoung.top/http%E7%8A%B6%E6%80%81%E7%A0%81.jpg" alt=""></p>
-<a id="more"></a>
-
-<p>100——客户必须继续发出请求</p>
-<p>101——客户要求服务器根据请求转换HTTP协议版本</p>
-<p>200——交易成功</p>
-<p>201——提示知道新文件的URL</p>
-<p>202——接受和处理、但处理未完成</p>
-<p>203——返回信息不确定或不完整</p>
-<p>204——请求收到，但返回信息为空</p>
-<p>205——服务器完成了请求，用户代理必须复位当前已经浏览过的文件</p>
-<p>206——服务器已经完成了部分用户的GET请求</p>
-<p>300——请求的资源可在多处得到</p>
-<p>301——删除请求数据</p>
-<p>302——在其他地址发现了请求数据</p>
-<p>303——建议客户访问其他URL或访问方式</p>
-<p>304——客户端已经执行了GET，但文件未变化</p>
-<p>305——请求的资源必须从服务器指定的地址得到</p>
-<p>306——前一版本HTTP中使用的代码，现行版本中不再使用</p>
-<p>307——申明请求的资源临时性删除</p>
-<p>400——错误请求，如语法错误</p>
-<p>401——请求授权失败</p>
-<p>402——保留有效ChargeTo头响应</p>
-<p>403——请求不允许</p>
-<p>404——没有发现文件、查询或URl</p>
-<p>405——用户在Request-Line字段定义的方法不允许</p>
-<p>406——根据用户发送的Accept拖，请求资源不可访问</p>
-<p>407——类似401，用户必须首先在代理服务器上得到授权</p>
-<p>408——客户端没有在用户指定的时间内完成请求</p>
-<p>409——对当前资源状态，请求不能完成</p>
-<p>410——服务器上不再有此资源且无进一步的参考地址</p>
-<p>411——服务器拒绝用户定义的Content-Length属性请求</p>
-<p>412——一个或多个请求头字段在当前请求中错误</p>
-<p>413——请求的资源大于服务器允许的大小</p>
-<p>414——请求的资源URL长于服务器允许的长度</p>
-<p>415——请求资源不支持请求项目格式</p>
-<p>416——请求中包含Range请求头字段，在当前请求资源范围内没有range指示值，请求也不包含If-Range请求头字段</p>
-<p>417——服务器不满足请求Expect头字段指定的期望值，如果是代理服务器，可能是下一级服务器不能满足请求</p>
-<p>500——服务器产生内部错误</p>
-<p>501——服务器不支持请求的函数</p>
-<p>502——服务器暂时不可用，有时是为了防止发生系统过载</p>
-<p>503——服务器过载或暂停维修</p>
-<p>504——关口过载，服务器使用另一个关口或服务来响应用户，等待时间设定值较长</p>
-<p>505——服务器不支持或拒绝支请求头中指定的HTTP版本</p>
-]]></content>
-      <categories>
-        <category>API</category>
-      </categories>
-      <tags>
-        <tag>HTTP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>获取阿里云临时授权访问STStoken</title>
-    <url>/2019/03/07/%E8%8E%B7%E5%8F%96%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%B4%E6%97%B6%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AESTStoken/</url>
-    <content><![CDATA[<p><img src="http://oss.forestyoung.top/%E8%8E%B7%E5%8F%96STStoken.jpg" alt=""></p>
-<a id="more"></a>
-
-<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a href="https://www.alibabacloud.com/help/zh/doc-detail/27364.htm?spm=a2c63.p38356.b99.35.5c778d840l5Eaw" target="_blank" rel="noopener">阿里云官方文档</a><br><a href="https://help.aliyun.com/document_detail/28788.html?spm=a2c4g.11186623.6.645.7f4a7905JfcrXA" target="_blank" rel="noopener">相关SDK</a></p>
-<h3 id="RAM-和-STS-介绍"><a href="#RAM-和-STS-介绍" class="headerlink" title="RAM 和 STS 介绍"></a>RAM 和 STS 介绍</h3><blockquote>
-<p>阿里云权限管理机制包括访问控制（Resource Access Management，简称 RAM）和安全凭证管理（Security Token Service，简称 STS），可以根据需求使用不同权限的子账号来访问表格存储，也支持为用户提供访问的临时授权。使用RAM和STS能极大地提高管理的灵活性和安全性。</p>
-<p>RAM 的主要作用是控制账号系统的权限。通过使用 RAM 可以将在主账号的权限范围内创建子账号，给不同的子账号分配不同的权限，从而达到授权管理的目的。详情请参见<a href="https://www.alibabacloud.com/help/doc-detail/28627.htm" target="_blank" rel="noopener">访问控制产品帮忙文档</a>。</p>
-<p>STS 是一个安全凭证（Token）的管理系统，用来授予临时的访问权限，这样就可以通过 STS 来完成对于临时用户的访问授权。</p>
-</blockquote>
-<h3 id="STS临时授权访问"><a href="#STS临时授权访问" class="headerlink" title="STS临时授权访问"></a>STS临时授权访问</h3><blockquote>
-<p>RAM子账号都是可以长期正常使用的，发生泄露后如果无法及时解除权限，会非常危险。</p>
-<p>当开发者的 app 被用户使用之后，用户的数据要写入 ram-test-dev 这个实例。当 app 的用户数据很多时，要求能够安全地授权给众多的 app 用户上传数据，并且保证多个用户之间存储的隔离。</p>
-<p>类似这种场景需要临时访问权限，应该使用 STS 来完成。STS 可以指定复杂的策略来对特定的用户进行限制，仅提供最小的权限。</p>
-</blockquote>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p><strong>1.创建和管理角色STS的AssumeRole接口的使用，需要在RAM中创建和管理角色</strong></p>
-<p><strong>2.添加相关依赖</strong></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--添加aliyun-java-sdk的相关依赖 start--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-sts<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--添加aliyun-java-sdk的相关依赖 end--&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>3.配置文件中添加所需请求参数</strong></p>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#阿里云访问控制RAM子账户信息,需要登录阿里云控制台查看(Secret只在创建时可查看,需要做好备份)</span></span><br><span class="line"><span class="meta">aliyun.oss.accessKeyId</span>=<span class="string">#你的accessKeyId</span></span><br><span class="line"><span class="meta">aliyun.oss.accessKeySecret</span>=<span class="string">#你的accessKeySecret</span></span><br><span class="line"><span class="comment">#角色ID，在角色中进行授权，获取相应的权限</span></span><br><span class="line"><span class="meta">aliyun.sts.roleArn</span>=<span class="string">#你的roleArn</span></span><br><span class="line"><span class="comment">#指临时凭证的名称，一般来说建议使用不同的应用程序用户来区分。自定义(可不设置)</span></span><br><span class="line"><span class="meta">aliyun.sts.roleSessionName</span>=<span class="string">test</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>4.示例代码</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取Token返回结果</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: young</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2018年12月04日 13:56</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StsTokenVO</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 访问密钥标识</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String accessKeyId;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 访问密钥</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String accessKeySecret;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 安全令牌</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String securityToken;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StsTokenServiceImpl</span> <span class="keyword">implements</span> <span class="title">StsTokenService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(StsTokenServiceImpl<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.oss.accessKeyId&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String accessKeyId;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.oss.accessKeySecret&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String accessKeySecret;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.sts.roleArn&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String roleArn;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.sts.roleSessionName&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String roleSessionName;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * token失效时间，单位秒(不设置默认1小时,这里设置5分钟)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">// private static final Long durationSeconds= 300L;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String ENDPOINT = <span class="string">"sts.aliyuncs.com"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取STStoken接口</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>:</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>: StsTokenVO</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span>: young</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span>: 2018/12/4 13:59</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StsTokenVO <span class="title">getStsToken</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StsTokenVO tokenVO = <span class="keyword">new</span> StsTokenVO();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 添加endpoint（直接使用STS endpoint，前两个参数留空，无需添加region ID）</span></span><br><span class="line">            DefaultProfile.addEndpoint(<span class="string">""</span>, <span class="string">""</span>, <span class="string">"Sts"</span>, ENDPOINT);</span><br><span class="line">            <span class="comment">// 构造default profile（参数留空，无需添加region ID）</span></span><br><span class="line">            IClientProfile profile = DefaultProfile.getProfile(<span class="string">""</span>, accessKeyId, accessKeySecret);</span><br><span class="line">            <span class="comment">// 用profile构造client</span></span><br><span class="line">            DefaultAcsClient client = <span class="keyword">new</span> DefaultAcsClient(profile);</span><br><span class="line">            <span class="keyword">final</span> AssumeRoleRequest request = <span class="keyword">new</span> AssumeRoleRequest();</span><br><span class="line">            request.setMethod(MethodType.POST);</span><br><span class="line">            request.setRoleArn(roleArn);</span><br><span class="line">            request.setRoleSessionName(roleSessionName);</span><br><span class="line">            <span class="comment">// request.setDurationSeconds(durationSeconds);</span></span><br><span class="line">            <span class="comment">// 针对该临时权限可以根据该属性赋予规则，格式为json，没有特殊要求，默认为空</span></span><br><span class="line">            <span class="comment">// request.setPolicy(policy); // Optional</span></span><br><span class="line">            <span class="keyword">final</span> AssumeRoleResponse response = client.getAcsResponse(request);</span><br><span class="line">            AssumeRoleResponse.Credentials credentials = response.getCredentials();</span><br><span class="line">            tokenVO.setAccessKeyId(credentials.getAccessKeyId());</span><br><span class="line">            tokenVO.setAccessKeySecret(credentials.getAccessKeySecret());</span><br><span class="line">            tokenVO.setSecurityToken(credentials.getSecurityToken());</span><br><span class="line">            <span class="keyword">return</span> tokenVO;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClientException e) &#123;</span><br><span class="line">            LOGGER.error(<span class="string">"获取阿里云STS临时授权权限失败，错误信息："</span> + e);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>代码实现</category>
-      </categories>
-      <tags>
-        <tag>阿里云</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hadoop</title>
-    <url>/2020/05/09/Hadoop%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<p><img src="http://oss.forestyoung.top/river-5134258_1920.jpg" alt=""></p>
-<a id="more"></a>
-
-<h3 id="jdk安装"><a href="#jdk安装" class="headerlink" title="jdk安装"></a>jdk安装</h3><p>系统：CentOS</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看yum包含的jdk版本</span></span><br><span class="line">[root@ ~]# yum search java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装JDK</span></span><br><span class="line">[root@ ~]# yum install java-1.8.0-openjdk-devel.x86_64</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量前，需要定位到jdk安装目录</span></span><br><span class="line">[root@ ~]# which java</span><br><span class="line">/usr/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 再找到/usr/bin/java的超链接位置发现还是超链接</span></span><br><span class="line">[root@ ~]# ls -lrt /usr/bin/java</span><br><span class="line">/usr/bin/java -&gt; /etc/alternatives/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 对超链接再次查询，发现最终位置</span></span><br><span class="line">[root@ ~]# ls -lrt /etc/alternatives/java</span><br><span class="line">/etc/alternatives/java -&gt; /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/jre/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量</span></span><br><span class="line">[root@ ~]# vim /etc/profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置下列信息，JAVA_HOME需要配置为刚查询出来的jdk目录</span></span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使配置生效</span></span><br><span class="line">[root@ ~]# source /etc/profile</span><br></pre></td></tr></table></figure>
-
-<h3 id="Hadoop安装"><a href="#Hadoop安装" class="headerlink" title="Hadoop安装"></a>Hadoop安装</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下载包</span></span><br><span class="line">[root@ ~]# wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line">[root@ ~]# tar -zxvf hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置</span></span><br><span class="line">[root@ ~]# cd /hadoop-3.1.3/etc/hadoop</span><br><span class="line"><span class="meta">#</span><span class="bash"> 三个配置文件配置core-site.xml，hdfs-site.xml，mapred-site.xml</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Hadoop运行模式"><a href="#Hadoop运行模式" class="headerlink" title="Hadoop运行模式"></a>Hadoop运行模式</h2><ul>
-<li>本地模式</li>
-<li>伪分布式</li>
-<li>完全分布式</li>
-<li></li>
-</ul>
-]]></content>
-      <categories>
-        <category>大数据</category>
-      </categories>
-      <tags>
-        <tag>Hadoop</tag>
       </tags>
   </entry>
   <entry>
@@ -316,6 +266,56 @@
       </categories>
       <tags>
         <tag>Hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开发问题合集</title>
+    <url>/2020/05/16/%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/</url>
+    <content><![CDATA[<p><img src="http://oss.forestyoung.top/tunnel-5122424_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p><a href="https://juejin.im/post/5d9c4c1bf265da5b5d2047a2" target="_blank" rel="noopener">阿里云自建图床</a></p>
+]]></content>
+      <categories>
+        <category>开发问题</category>
+      </categories>
+      <tags>
+        <tag>其它</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>获取阿里云临时授权访问STStoken</title>
+    <url>/2019/03/07/%E8%8E%B7%E5%8F%96%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%B4%E6%97%B6%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AESTStoken/</url>
+    <content><![CDATA[<p><img src="http://oss.forestyoung.top/%E8%8E%B7%E5%8F%96STStoken.jpg" alt=""></p>
+<a id="more"></a>
+
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a href="https://www.alibabacloud.com/help/zh/doc-detail/27364.htm?spm=a2c63.p38356.b99.35.5c778d840l5Eaw" target="_blank" rel="noopener">阿里云官方文档</a><br><a href="https://help.aliyun.com/document_detail/28788.html?spm=a2c4g.11186623.6.645.7f4a7905JfcrXA" target="_blank" rel="noopener">相关SDK</a></p>
+<h3 id="RAM-和-STS-介绍"><a href="#RAM-和-STS-介绍" class="headerlink" title="RAM 和 STS 介绍"></a>RAM 和 STS 介绍</h3><blockquote>
+<p>阿里云权限管理机制包括访问控制（Resource Access Management，简称 RAM）和安全凭证管理（Security Token Service，简称 STS），可以根据需求使用不同权限的子账号来访问表格存储，也支持为用户提供访问的临时授权。使用RAM和STS能极大地提高管理的灵活性和安全性。</p>
+<p>RAM 的主要作用是控制账号系统的权限。通过使用 RAM 可以将在主账号的权限范围内创建子账号，给不同的子账号分配不同的权限，从而达到授权管理的目的。详情请参见<a href="https://www.alibabacloud.com/help/doc-detail/28627.htm" target="_blank" rel="noopener">访问控制产品帮忙文档</a>。</p>
+<p>STS 是一个安全凭证（Token）的管理系统，用来授予临时的访问权限，这样就可以通过 STS 来完成对于临时用户的访问授权。</p>
+</blockquote>
+<h3 id="STS临时授权访问"><a href="#STS临时授权访问" class="headerlink" title="STS临时授权访问"></a>STS临时授权访问</h3><blockquote>
+<p>RAM子账号都是可以长期正常使用的，发生泄露后如果无法及时解除权限，会非常危险。</p>
+<p>当开发者的 app 被用户使用之后，用户的数据要写入 ram-test-dev 这个实例。当 app 的用户数据很多时，要求能够安全地授权给众多的 app 用户上传数据，并且保证多个用户之间存储的隔离。</p>
+<p>类似这种场景需要临时访问权限，应该使用 STS 来完成。STS 可以指定复杂的策略来对特定的用户进行限制，仅提供最小的权限。</p>
+</blockquote>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p><strong>1.创建和管理角色STS的AssumeRole接口的使用，需要在RAM中创建和管理角色</strong></p>
+<p><strong>2.添加相关依赖</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--添加aliyun-java-sdk的相关依赖 start--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-sts<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--添加aliyun-java-sdk的相关依赖 end--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>3.配置文件中添加所需请求参数</strong></p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#阿里云访问控制RAM子账户信息,需要登录阿里云控制台查看(Secret只在创建时可查看,需要做好备份)</span></span><br><span class="line"><span class="meta">aliyun.oss.accessKeyId</span>=<span class="string">#你的accessKeyId</span></span><br><span class="line"><span class="meta">aliyun.oss.accessKeySecret</span>=<span class="string">#你的accessKeySecret</span></span><br><span class="line"><span class="comment">#角色ID，在角色中进行授权，获取相应的权限</span></span><br><span class="line"><span class="meta">aliyun.sts.roleArn</span>=<span class="string">#你的roleArn</span></span><br><span class="line"><span class="comment">#指临时凭证的名称，一般来说建议使用不同的应用程序用户来区分。自定义(可不设置)</span></span><br><span class="line"><span class="meta">aliyun.sts.roleSessionName</span>=<span class="string">test</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>4.示例代码</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取Token返回结果</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: young</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2018年12月04日 13:56</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StsTokenVO</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 访问密钥标识</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String accessKeyId;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 访问密钥</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String accessKeySecret;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 安全令牌</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String securityToken;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StsTokenServiceImpl</span> <span class="keyword">implements</span> <span class="title">StsTokenService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(StsTokenServiceImpl<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.oss.accessKeyId&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String accessKeyId;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.oss.accessKeySecret&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String accessKeySecret;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.sts.roleArn&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String roleArn;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.sts.roleSessionName&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String roleSessionName;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * token失效时间，单位秒(不设置默认1小时,这里设置5分钟)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">// private static final Long durationSeconds= 300L;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String ENDPOINT = <span class="string">"sts.aliyuncs.com"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取STStoken接口</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>:</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>: StsTokenVO</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span>: young</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span>: 2018/12/4 13:59</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StsTokenVO <span class="title">getStsToken</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StsTokenVO tokenVO = <span class="keyword">new</span> StsTokenVO();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 添加endpoint（直接使用STS endpoint，前两个参数留空，无需添加region ID）</span></span><br><span class="line">            DefaultProfile.addEndpoint(<span class="string">""</span>, <span class="string">""</span>, <span class="string">"Sts"</span>, ENDPOINT);</span><br><span class="line">            <span class="comment">// 构造default profile（参数留空，无需添加region ID）</span></span><br><span class="line">            IClientProfile profile = DefaultProfile.getProfile(<span class="string">""</span>, accessKeyId, accessKeySecret);</span><br><span class="line">            <span class="comment">// 用profile构造client</span></span><br><span class="line">            DefaultAcsClient client = <span class="keyword">new</span> DefaultAcsClient(profile);</span><br><span class="line">            <span class="keyword">final</span> AssumeRoleRequest request = <span class="keyword">new</span> AssumeRoleRequest();</span><br><span class="line">            request.setMethod(MethodType.POST);</span><br><span class="line">            request.setRoleArn(roleArn);</span><br><span class="line">            request.setRoleSessionName(roleSessionName);</span><br><span class="line">            <span class="comment">// request.setDurationSeconds(durationSeconds);</span></span><br><span class="line">            <span class="comment">// 针对该临时权限可以根据该属性赋予规则，格式为json，没有特殊要求，默认为空</span></span><br><span class="line">            <span class="comment">// request.setPolicy(policy); // Optional</span></span><br><span class="line">            <span class="keyword">final</span> AssumeRoleResponse response = client.getAcsResponse(request);</span><br><span class="line">            AssumeRoleResponse.Credentials credentials = response.getCredentials();</span><br><span class="line">            tokenVO.setAccessKeyId(credentials.getAccessKeyId());</span><br><span class="line">            tokenVO.setAccessKeySecret(credentials.getAccessKeySecret());</span><br><span class="line">            tokenVO.setSecurityToken(credentials.getSecurityToken());</span><br><span class="line">            <span class="keyword">return</span> tokenVO;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClientException e) &#123;</span><br><span class="line">            LOGGER.error(<span class="string">"获取阿里云STS临时授权权限失败，错误信息："</span> + e);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>代码实现</category>
+      </categories>
+      <tags>
+        <tag>阿里云</tag>
       </tags>
   </entry>
 </search>
