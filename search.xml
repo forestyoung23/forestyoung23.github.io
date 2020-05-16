@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hadoop</title>
-    <url>/2020/05/09/Hadoop%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<p><img src="http://oss.forestyoung.top/river-5134258_1920.jpg" alt=""></p>
-<a id="more"></a>
-
-<h3 id="jdk安装"><a href="#jdk安装" class="headerlink" title="jdk安装"></a>jdk安装</h3><p>系统：CentOS</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看yum包含的jdk版本</span></span><br><span class="line">[root@ ~]# yum search java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装JDK</span></span><br><span class="line">[root@ ~]# yum install java-1.8.0-openjdk-devel.x86_64</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量前，需要定位到jdk安装目录</span></span><br><span class="line">[root@ ~]# which java</span><br><span class="line">/usr/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 再找到/usr/bin/java的超链接位置发现还是超链接</span></span><br><span class="line">[root@ ~]# ls -lrt /usr/bin/java</span><br><span class="line">/usr/bin/java -&gt; /etc/alternatives/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 对超链接再次查询，发现最终位置</span></span><br><span class="line">[root@ ~]# ls -lrt /etc/alternatives/java</span><br><span class="line">/etc/alternatives/java -&gt; /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/jre/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量</span></span><br><span class="line">[root@ ~]# vim /etc/profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置下列信息，JAVA_HOME需要配置为刚查询出来的jdk目录</span></span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使配置生效</span></span><br><span class="line">[root@ ~]# source /etc/profile</span><br></pre></td></tr></table></figure>
-
-<h3 id="Hadoop安装"><a href="#Hadoop安装" class="headerlink" title="Hadoop安装"></a>Hadoop安装</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下载包</span></span><br><span class="line">[root@ ~]# wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line">[root@ ~]# tar -zxvf hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置</span></span><br><span class="line">[root@ ~]# cd /hadoop-3.1.3/etc/hadoop</span><br><span class="line"><span class="meta">#</span><span class="bash"> 三个配置文件配置core-site.xml，hdfs-site.xml，mapred-site.xml</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Hadoop运行模式"><a href="#Hadoop运行模式" class="headerlink" title="Hadoop运行模式"></a>Hadoop运行模式</h2><ul>
-<li>本地模式</li>
-<li>伪分布式</li>
-<li>完全分布式</li>
-<li></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Hadoop</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>http状态码</title>
     <url>/2019/02/13/http%E7%8A%B6%E6%80%81%E7%A0%81/</url>
     <content><![CDATA[<p><img src="http://oss.forestyoung.top/http%E7%8A%B6%E6%80%81%E7%A0%81.jpg" alt=""></p>
@@ -77,6 +53,30 @@
       </tags>
   </entry>
   <entry>
+    <title>Hadoop</title>
+    <url>/2020/05/09/Hadoop%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<p><img src="http://oss.forestyoung.top/river-5134258_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<h3 id="jdk安装"><a href="#jdk安装" class="headerlink" title="jdk安装"></a>jdk安装</h3><p>系统：CentOS</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看yum包含的jdk版本</span></span><br><span class="line">[root@ ~]# yum search java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装JDK</span></span><br><span class="line">[root@ ~]# yum install java-1.8.0-openjdk-devel.x86_64</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量前，需要定位到jdk安装目录</span></span><br><span class="line">[root@ ~]# which java</span><br><span class="line">/usr/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 再找到/usr/bin/java的超链接位置发现还是超链接</span></span><br><span class="line">[root@ ~]# ls -lrt /usr/bin/java</span><br><span class="line">/usr/bin/java -&gt; /etc/alternatives/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 对超链接再次查询，发现最终位置</span></span><br><span class="line">[root@ ~]# ls -lrt /etc/alternatives/java</span><br><span class="line">/etc/alternatives/java -&gt; /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/jre/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量</span></span><br><span class="line">[root@ ~]# vim /etc/profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置下列信息，JAVA_HOME需要配置为刚查询出来的jdk目录</span></span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使配置生效</span></span><br><span class="line">[root@ ~]# source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="Hadoop安装"><a href="#Hadoop安装" class="headerlink" title="Hadoop安装"></a>Hadoop安装</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下载包</span></span><br><span class="line">[root@ ~]# wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line">[root@ ~]# tar -zxvf hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置</span></span><br><span class="line">[root@ ~]# cd /hadoop-3.1.3/etc/hadoop</span><br><span class="line"><span class="meta">#</span><span class="bash"> 三个配置文件配置core-site.xml，hdfs-site.xml，mapred-site.xml</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Hadoop运行模式"><a href="#Hadoop运行模式" class="headerlink" title="Hadoop运行模式"></a>Hadoop运行模式</h2><ul>
+<li>本地模式</li>
+<li>伪分布式</li>
+<li>完全分布式</li>
+<li></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java数字金额大写转换</title>
     <url>/2019/03/17/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D%E5%A4%A7%E5%86%99%E8%BD%AC%E6%8D%A2/</url>
     <content><![CDATA[<p><img src="http://oss.forestyoung.top/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D.jpg" alt=""></p>
@@ -121,11 +121,68 @@
       </tags>
   </entry>
   <entry>
-    <title>阿里云自建图床</title>
-    <url>/2020/03/21/%E9%98%BF%E9%87%8C%E4%BA%91%E8%87%AA%E5%BB%BA%E5%9B%BE%E5%BA%8A/</url>
-    <content><![CDATA[<h1 id="阿里云自建图床"><a href="#阿里云自建图床" class="headerlink" title="阿里云自建图床"></a>阿里云自建图床</h1><blockquote>
-<p>参考博客<a href="https://juejin.im/post/5d9c4c1bf265da5b5d2047a2" target="_blank" rel="noopener">https://juejin.im/post/5d9c4c1bf265da5b5d2047a2</a></p>
+    <title>开发问题合集</title>
+    <url>/2020/05/16/%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/</url>
+    <content><![CDATA[<p><img src="http://oss.forestyoung.top/tunnel-5122424_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p><a href="https://juejin.im/post/5d9c4c1bf265da5b5d2047a2" target="_blank" rel="noopener">阿里云自建图床</a></p>
+]]></content>
+      <tags>
+        <tag>其它</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>多线程的挑战</title>
+    <url>/2020/05/09/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%8C%91%E6%88%98/</url>
+    <content><![CDATA[<h3 id="多线程的挑战"><a href="#多线程的挑战" class="headerlink" title="多线程的挑战"></a>多线程的挑战</h3><ul>
+<li>上下文切换</li>
+<li>死锁</li>
+</ul>
+<h4 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h4><blockquote>
+<p>单核处理器也可通过CPU给每个线程分配时间片来实现多线程，因为时间片非常短，让人感觉是多个线程同时执行。</p>
+<p>问题：切换过程中需要保存上一个任务的状态以便后面切回时恢复</p>
 </blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">循环次数</th>
+<th align="left">串行执行耗时/ms</th>
+<th align="left">并发执行耗时/ms</th>
+<th align="left">并发比串行快多少</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1万</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">慢</td>
+</tr>
+<tr>
+<td align="left">10万</td>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left">慢</td>
+</tr>
+<tr>
+<td align="left">100万</td>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">差不多</td>
+</tr>
+<tr>
+<td align="left">1000万</td>
+<td align="left">9</td>
+<td align="left">6</td>
+<td align="left">1.5倍</td>
+</tr>
+<tr>
+<td align="left">1亿</td>
+<td align="left">54</td>
+<td align="left">31</td>
+<td align="left">接近1倍</td>
+</tr>
+</tbody></table>
 ]]></content>
   </entry>
   <entry>
