@@ -1,6 +1,7 @@
 ---
 title: Hadoop
 date: 2020-05-09 00:45:41
+categories: 大数据
 tags: Hadoop
 ---
 

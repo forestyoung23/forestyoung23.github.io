@@ -1,8 +1,8 @@
 ---
 title: Java数字金额大写转换
 date: 2019-03-17 22:41:51
-tags: 
-	- 工具类
+categories: 代码实现
+tags: 工具类
 ---
 
 ![](http://oss.forestyoung.top/Java数字金额.jpg)

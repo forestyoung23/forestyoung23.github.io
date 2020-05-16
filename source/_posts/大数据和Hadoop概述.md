@@ -1,7 +1,8 @@
 ---
 title: 大数据和Hadoop概述
 date: 2020-05-09 00:40:25
-tags: 大数据
+categories: 大数据
+tags: Hadoop
 ---
 
 ![](http://oss.forestyoung.top/outdoors-5129182_1920.jpg)

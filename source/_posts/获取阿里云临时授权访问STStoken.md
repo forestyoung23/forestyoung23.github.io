@@ -1,11 +1,14 @@
 ---
 title: 获取阿里云临时授权访问STStoken
 date: 2019-03-07 20:06:24
+categories: 代码实现
 tags: 阿里云
 ---
 
 ![](http://oss.forestyoung.top/获取STStoken.jpg)
 <!--more-->
+
+### 参考文档
 
 [阿里云官方文档](https://www.alibabacloud.com/help/zh/doc-detail/27364.htm?spm=a2c63.p38356.b99.35.5c778d840l5Eaw)
 [相关SDK](https://help.aliyun.com/document_detail/28788.html?spm=a2c4g.11186623.6.645.7f4a7905JfcrXA)
