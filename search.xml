@@ -75,6 +75,36 @@
       </tags>
   </entry>
   <entry>
+    <title>开发问题合集</title>
+    <url>/2020/05/16/%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/</url>
+    <content><![CDATA[<p><img src="http://oss.forestyoung.top/tunnel-5122424_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p><a href="https://juejin.im/post/5d9c4c1bf265da5b5d2047a2" target="_blank" rel="noopener">阿里云自建图床</a></p>
+<h3 id="OAuth2-0"><a href="#OAuth2-0" class="headerlink" title="OAuth2.0"></a>OAuth2.0</h3><blockquote>
+<p>OAuth2是一个基于令牌的安全验证和授权框架，有四种类型的授权：1密码，2客户端凭证，3授权码，4隐式</p>
+<p>Access token:令牌，用于访问受保护资源</p>
+<p>Refresh token:刷新token，在access token失效时通过refresh token重新获取access token</p>
+<p>Expires in:过期前的秒数</p>
+<p>流程：用户登入访问授权服务器获取token，拿token请求受保护资源的服务器，受保护资源的服务器请求授权服务器校验token是否有效，有效则允许访问</p>
+<p>JWT(JSON WEB Token):目的是为OAuth2令牌提供标准结构</p>
+<p>JWT令牌编码使用Base64，由验证服务器签名，保证令牌没有被篡改。</p>
+<p>JWT是密码签名的，接收该服务的微服务可以保证令牌的内容是有效的，因此，不需要调用验证服务来确认令牌的内容，因为令牌的签名可以被接收微服务确认，并且内容可以被接收微服务检查</p>
+</blockquote>
+<p><a href="https://www.cnblogs.com/blowing00/p/4521135.html" target="_blank" rel="noopener">简单介绍 Oauth2.0 原理</a></p>
+<p><a href="https://www.c0nblogs.com/blowing00/p/4524132.html" target="_blank" rel="noopener">Access Token 与 Refresh Token</a></p>
+<p><a href="https://juejin.im/post/5c1200ece51d4560f0435795" target="_blank" rel="noopener">基于 JWT + Refresh Token 的用户认证实践</a></p>
+<p>![](<a href="http://oss.forestyoung.top/截屏2020-05-17" target="_blank" rel="noopener">http://oss.forestyoung.top/截屏2020-05-17</a> 上午2.34.42.png)</p>
+<p><a href="https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html" target="_blank" rel="noopener">JSON Web Token 入门教程</a></p>
+]]></content>
+      <categories>
+        <category>开发问题</category>
+      </categories>
+      <tags>
+        <tag>其它</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>http状态码</title>
     <url>/2019/02/13/http%E7%8A%B6%E6%80%81%E7%A0%81/</url>
     <content><![CDATA[<p><img src="http://oss.forestyoung.top/http%E7%8A%B6%E6%80%81%E7%A0%81.jpg" alt=""></p>
@@ -127,68 +157,6 @@
       </categories>
       <tags>
         <tag>HTTP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>多线程的挑战</title>
-    <url>/2020/05/09/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%8C%91%E6%88%98/</url>
-    <content><![CDATA[<p><img src="http://oss.forestyoung.top/autumn-4875907_1920.jpg" alt=""></p>
-<a id="more"></a>
-
-<h3 id="多线程的挑战"><a href="#多线程的挑战" class="headerlink" title="多线程的挑战"></a>多线程的挑战</h3><ul>
-<li>上下文切换</li>
-<li>死锁</li>
-</ul>
-<h4 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h4><blockquote>
-<p>单核处理器也可通过CPU给每个线程分配时间片来实现多线程，因为时间片非常短，让人感觉是多个线程同时执行。</p>
-<p>问题：切换过程中需要保存上一个任务的状态以便后面切回时恢复</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="left">循环次数</th>
-<th align="left">串行执行耗时/ms</th>
-<th align="left">并发执行耗时/ms</th>
-<th align="left">并发比串行快多少</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1万</td>
-<td align="left">0</td>
-<td align="left">1</td>
-<td align="left">慢</td>
-</tr>
-<tr>
-<td align="left">10万</td>
-<td align="left">2</td>
-<td align="left">3</td>
-<td align="left">慢</td>
-</tr>
-<tr>
-<td align="left">100万</td>
-<td align="left">5</td>
-<td align="left">5</td>
-<td align="left">差不多</td>
-</tr>
-<tr>
-<td align="left">1000万</td>
-<td align="left">9</td>
-<td align="left">6</td>
-<td align="left">1.5倍</td>
-</tr>
-<tr>
-<td align="left">1亿</td>
-<td align="left">54</td>
-<td align="left">31</td>
-<td align="left">接近1倍</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>多线程</category>
-      </categories>
-      <tags>
-        <tag>多线程问题</tag>
       </tags>
   </entry>
   <entry>
@@ -269,18 +237,65 @@
       </tags>
   </entry>
   <entry>
-    <title>开发问题合集</title>
-    <url>/2020/05/16/%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/</url>
-    <content><![CDATA[<p><img src="http://oss.forestyoung.top/tunnel-5122424_1920.jpg" alt=""></p>
+    <title>多线程的挑战</title>
+    <url>/2020/05/09/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%8C%91%E6%88%98/</url>
+    <content><![CDATA[<p><img src="http://oss.forestyoung.top/autumn-4875907_1920.jpg" alt=""></p>
 <a id="more"></a>
 
-<h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p><a href="https://juejin.im/post/5d9c4c1bf265da5b5d2047a2" target="_blank" rel="noopener">阿里云自建图床</a></p>
+<h3 id="多线程的挑战"><a href="#多线程的挑战" class="headerlink" title="多线程的挑战"></a>多线程的挑战</h3><ul>
+<li>上下文切换</li>
+<li>死锁</li>
+</ul>
+<h4 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h4><blockquote>
+<p>单核处理器也可通过CPU给每个线程分配时间片来实现多线程，因为时间片非常短，让人感觉是多个线程同时执行。</p>
+<p>问题：切换过程中需要保存上一个任务的状态以便后面切回时恢复</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">循环次数</th>
+<th align="left">串行执行耗时/ms</th>
+<th align="left">并发执行耗时/ms</th>
+<th align="left">并发比串行快多少</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1万</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">慢</td>
+</tr>
+<tr>
+<td align="left">10万</td>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left">慢</td>
+</tr>
+<tr>
+<td align="left">100万</td>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">差不多</td>
+</tr>
+<tr>
+<td align="left">1000万</td>
+<td align="left">9</td>
+<td align="left">6</td>
+<td align="left">1.5倍</td>
+</tr>
+<tr>
+<td align="left">1亿</td>
+<td align="left">54</td>
+<td align="left">31</td>
+<td align="left">接近1倍</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
-        <category>开发问题</category>
+        <category>多线程</category>
       </categories>
       <tags>
-        <tag>其它</tag>
+        <tag>多线程问题</tag>
       </tags>
   </entry>
   <entry>
