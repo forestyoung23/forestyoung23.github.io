@@ -5,7 +5,7 @@ categories: API
 tags: HTTP
 ---
 
-![](http://oss.forestyoung.top/http状态码.jpg)
+![](https://oss.forestyoung.top/http状态码.jpg)
 <!--more-->
 
 100——客户必须继续发出请求

@@ -5,7 +5,7 @@ categories: 大数据
 tags: Hadoop
 ---
 
-![](http://oss.forestyoung.top/river-5134258_1920.jpg)
+![](https://oss.forestyoung.top/river-5134258_1920.jpg)
 
 <!--more-->
 

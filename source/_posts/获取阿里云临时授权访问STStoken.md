@@ -5,7 +5,7 @@ categories: 代码实现
 tags: 阿里云
 ---
 
-![](http://oss.forestyoung.top/获取STStoken.jpg)
+![](https://oss.forestyoung.top/获取STStoken.jpg)
 <!--more-->
 
 ### 参考文档
