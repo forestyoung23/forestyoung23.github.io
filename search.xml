@@ -28,6 +28,31 @@
       </tags>
   </entry>
   <entry>
+    <title>Session过期时间</title>
+    <url>/2020/05/17/Session%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<p><img src="https://oss.forestyoung.top/lighthouse-5286823_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>项目使用cookie和session实现用户认证，在使用过程中通过设置session的过期时间来达到超时自动退出登录的效果</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"> 		<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * session过期时间15分钟(session默认过期时间为半小时，这里设置15分钟与默认时间区分，防止时间混淆)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_TIME = <span class="number">15</span> * <span class="number">60</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用户登录</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> Forest</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2020/4/28 18:17</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"login"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultData <span class="title">login</span><span class="params">(HttpServletRequest request, @RequestBody UserDTO user)</span> </span>&#123;</span><br><span class="line">        ResultData resultData = userService.login(user);</span><br><span class="line">        <span class="keyword">if</span> (resultData.isSucceed()) &#123;</span><br><span class="line">            <span class="comment">// 登录后设置session过期时间半小时</span></span><br><span class="line">            HttpSession session = request.getSession();</span><br><span class="line">            session.setAttribute(<span class="string">"isLogin"</span>, <span class="string">"y"</span>);</span><br><span class="line">            session.setAttribute(<span class="string">"userName"</span>, user.getUserName());</span><br><span class="line">            session.setMaxInactiveInterval(MAX_TIME);</span><br><span class="line">            log.info(<span class="string">"用户:&#123;&#125;登录成功"</span>, user.getUserName());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultData;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>于是猜测是不是可以设置过期时间为0或负数来达到使session失效的效果，从而实现退出登录功能</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">session.setMaxInactiveInterval(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// 或者任意负数</span></span><br><span class="line">session.setMaxInactiveInterval(-<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>debug发现当调用完登出接口后，session依然存在</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 用户登出</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@author</span> Forest</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@date</span> 2020/5/17 5:36 下午</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@PostMapping</span>(<span class="string">"loginOut"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> ResultData <span class="title">loginOut</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">      HttpSession session = request.getSession();</span><br><span class="line">      log.info(<span class="string">"用户：&#123;&#125;登出"</span>, session.getAttribute(<span class="string">"userName"</span>));</span><br><span class="line">      session.setMaxInactiveInterval(<span class="number">0</span>);</span><br><span class="line">      <span class="keyword">return</span> ResultDataUtils.getSuccessResult(<span class="string">"登出成功"</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2>]]></content>
+      <categories>
+        <category>代码实现</category>
+      </categories>
+      <tags>
+        <tag>JavaWeb</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java数字金额大写转换</title>
     <url>/2019/03/17/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D%E5%A4%A7%E5%86%99%E8%BD%AC%E6%8D%A2/</url>
     <content><![CDATA[<p><img src="https://oss.forestyoung.top/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D.jpg" alt=""></p>
@@ -130,31 +155,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Session过期时间</title>
-    <url>/2020/05/17/Session%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4/</url>
-    <content><![CDATA[<p><img src="https://oss.forestyoung.top/lighthouse-5286823_1920.jpg" alt=""></p>
-<a id="more"></a>
-
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>项目使用cookie和session实现用户认证，在使用过程中通过设置session的过期时间来达到超时自动退出登录的效果</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"> 		<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * session过期时间15分钟(session默认过期时间为半小时，这里设置15分钟与默认时间区分，防止时间混淆)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_TIME = <span class="number">15</span> * <span class="number">60</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用户登录</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> Forest</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2020/4/28 18:17</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"login"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultData <span class="title">login</span><span class="params">(HttpServletRequest request, @RequestBody UserDTO user)</span> </span>&#123;</span><br><span class="line">        ResultData resultData = userService.login(user);</span><br><span class="line">        <span class="keyword">if</span> (resultData.isSucceed()) &#123;</span><br><span class="line">            <span class="comment">// 登录后设置session过期时间半小时</span></span><br><span class="line">            HttpSession session = request.getSession();</span><br><span class="line">            session.setAttribute(<span class="string">"isLogin"</span>, <span class="string">"y"</span>);</span><br><span class="line">            session.setAttribute(<span class="string">"userName"</span>, user.getUserName());</span><br><span class="line">            session.setMaxInactiveInterval(MAX_TIME);</span><br><span class="line">            log.info(<span class="string">"用户:&#123;&#125;登录成功"</span>, user.getUserName());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultData;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>于是猜测是不是可以设置过期时间为0或负数来达到使session失效的效果，从而实现退出登录功能</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">session.setMaxInactiveInterval(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// 或者任意负数</span></span><br><span class="line">session.setMaxInactiveInterval(-<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
-<p>debug发现当调用完登出接口后，session依然存在</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 用户登出</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@author</span> Forest</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@date</span> 2020/5/17 5:36 下午</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@PostMapping</span>(<span class="string">"loginOut"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> ResultData <span class="title">loginOut</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">      HttpSession session = request.getSession();</span><br><span class="line">      log.info(<span class="string">"用户：&#123;&#125;登出"</span>, session.getAttribute(<span class="string">"userName"</span>));</span><br><span class="line">      session.setMaxInactiveInterval(<span class="number">0</span>);</span><br><span class="line">      <span class="keyword">return</span> ResultDataUtils.getSuccessResult(<span class="string">"登出成功"</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2>]]></content>
-      <categories>
-        <category>代码实现</category>
-      </categories>
-      <tags>
-        <tag>JavaWeb</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>多线程的挑战</title>
     <url>/2020/05/09/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%8C%91%E6%88%98/</url>
     <content><![CDATA[<p><img src="https://oss.forestyoung.top/autumn-4875907_1920.jpg" alt=""></p>
@@ -214,6 +214,51 @@
       </categories>
       <tags>
         <tag>多线程问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开发问题合集</title>
+    <url>/2020/05/16/%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/</url>
+    <content><![CDATA[<p><img src="https://oss.forestyoung.top/tunnel-5122424_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p><a href="https://juejin.im/post/5d9c4c1bf265da5b5d2047a2" target="_blank" rel="noopener">阿里云自建图床</a></p>
+<h3 id="OAuth2-0"><a href="#OAuth2-0" class="headerlink" title="OAuth2.0"></a>OAuth2.0</h3><blockquote>
+<p>OAuth2是一个基于令牌的安全验证和授权框架，有四种类型的授权：1密码，2客户端凭证，3授权码，4隐式</p>
+<p>Access token:令牌，用于访问受保护资源</p>
+<p>Refresh token:刷新token，在access token失效时通过refresh token重新获取access token</p>
+<p>Expires in:过期前的秒数</p>
+<p>流程：用户登入访问授权服务器获取token，拿token请求受保护资源的服务器，受保护资源的服务器请求授权服务器校验token是否有效，有效则允许访问</p>
+<p>JWT(JSON WEB Token):目的是为OAuth2令牌提供标准结构</p>
+<p>JWT令牌编码使用Base64，由验证服务器签名，保证令牌没有被篡改。</p>
+<p>JWT是密码签名的，接收该服务的微服务可以保证令牌的内容是有效的，因此，不需要调用验证服务来确认令牌的内容，因为令牌的签名可以被接收微服务确认，并且内容可以被接收微服务检查</p>
+</blockquote>
+<p><a href="https://www.cnblogs.com/blowing00/p/4521135.html" target="_blank" rel="noopener">简单介绍 Oauth2.0 原理</a></p>
+<p><a href="https://www.c0nblogs.com/blowing00/p/4524132.html" target="_blank" rel="noopener">Access Token 与 Refresh Token</a></p>
+<p><a href="https://juejin.im/post/5c1200ece51d4560f0435795" target="_blank" rel="noopener">基于 JWT + Refresh Token 的用户认证实践</a></p>
+<p><img src="https://oss.forestyoung.top/refreshtoken%E8%AF%B4%E6%98%8E.png" alt=""></p>
+<p><a href="https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html" target="_blank" rel="noopener">JSON Web Token 入门教程</a></p>
+]]></content>
+      <categories>
+        <category>开发问题</category>
+      </categories>
+      <tags>
+        <tag>其它</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java基础</title>
+    <url>/2020/05/16/%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p><img src="https://oss.forestyoung.top/wind-turbine-5163993_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<p><a href="https://blog.csdn.net/jiao_zg/article/details/78911469" target="_blank" rel="noopener">匿名内部类访问局部变量加final修饰的问题</a></p>
+]]></content>
+      <categories>
+        <category>Java基础</category>
+      </categories>
+      <tags>
+        <tag>其它</tag>
       </tags>
   </entry>
   <entry>
@@ -326,36 +371,6 @@
       </categories>
       <tags>
         <tag>阿里云</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开发问题合集</title>
-    <url>/2020/05/16/%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/</url>
-    <content><![CDATA[<p><img src="https://oss.forestyoung.top/tunnel-5122424_1920.jpg" alt=""></p>
-<a id="more"></a>
-
-<h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p><a href="https://juejin.im/post/5d9c4c1bf265da5b5d2047a2" target="_blank" rel="noopener">阿里云自建图床</a></p>
-<h3 id="OAuth2-0"><a href="#OAuth2-0" class="headerlink" title="OAuth2.0"></a>OAuth2.0</h3><blockquote>
-<p>OAuth2是一个基于令牌的安全验证和授权框架，有四种类型的授权：1密码，2客户端凭证，3授权码，4隐式</p>
-<p>Access token:令牌，用于访问受保护资源</p>
-<p>Refresh token:刷新token，在access token失效时通过refresh token重新获取access token</p>
-<p>Expires in:过期前的秒数</p>
-<p>流程：用户登入访问授权服务器获取token，拿token请求受保护资源的服务器，受保护资源的服务器请求授权服务器校验token是否有效，有效则允许访问</p>
-<p>JWT(JSON WEB Token):目的是为OAuth2令牌提供标准结构</p>
-<p>JWT令牌编码使用Base64，由验证服务器签名，保证令牌没有被篡改。</p>
-<p>JWT是密码签名的，接收该服务的微服务可以保证令牌的内容是有效的，因此，不需要调用验证服务来确认令牌的内容，因为令牌的签名可以被接收微服务确认，并且内容可以被接收微服务检查</p>
-</blockquote>
-<p><a href="https://www.cnblogs.com/blowing00/p/4521135.html" target="_blank" rel="noopener">简单介绍 Oauth2.0 原理</a></p>
-<p><a href="https://www.c0nblogs.com/blowing00/p/4524132.html" target="_blank" rel="noopener">Access Token 与 Refresh Token</a></p>
-<p><a href="https://juejin.im/post/5c1200ece51d4560f0435795" target="_blank" rel="noopener">基于 JWT + Refresh Token 的用户认证实践</a></p>
-<p><img src="https://oss.forestyoung.top/refreshtoken%E8%AF%B4%E6%98%8E.png" alt=""></p>
-<p><a href="https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html" target="_blank" rel="noopener">JSON Web Token 入门教程</a></p>
-]]></content>
-      <categories>
-        <category>开发问题</category>
-      </categories>
-      <tags>
-        <tag>其它</tag>
       </tags>
   </entry>
 </search>
