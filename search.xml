@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hadoop</title>
+    <url>/2020/05/09/Hadoop%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<p><img src="https://oss.forestyoung.top/river-5134258_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<h3 id="jdk安装"><a href="#jdk安装" class="headerlink" title="jdk安装"></a>jdk安装</h3><p>系统：CentOS</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看yum包含的jdk版本</span></span><br><span class="line">[root@ ~]# yum search java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装JDK</span></span><br><span class="line">[root@ ~]# yum install java-1.8.0-openjdk-devel.x86_64</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量前，需要定位到jdk安装目录</span></span><br><span class="line">[root@ ~]# which java</span><br><span class="line">/usr/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 再找到/usr/bin/java的超链接位置发现还是超链接</span></span><br><span class="line">[root@ ~]# ls -lrt /usr/bin/java</span><br><span class="line">/usr/bin/java -&gt; /etc/alternatives/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 对超链接再次查询，发现最终位置</span></span><br><span class="line">[root@ ~]# ls -lrt /etc/alternatives/java</span><br><span class="line">/etc/alternatives/java -&gt; /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/jre/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量</span></span><br><span class="line">[root@ ~]# vim /etc/profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置下列信息，JAVA_HOME需要配置为刚查询出来的jdk目录</span></span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使配置生效</span></span><br><span class="line">[root@ ~]# source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="Hadoop安装"><a href="#Hadoop安装" class="headerlink" title="Hadoop安装"></a>Hadoop安装</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下载包</span></span><br><span class="line">[root@ ~]# wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line">[root@ ~]# tar -zxvf hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置</span></span><br><span class="line">[root@ ~]# cd /hadoop-3.1.3/etc/hadoop</span><br><span class="line"><span class="meta">#</span><span class="bash"> 三个配置文件配置core-site.xml，hdfs-site.xml，mapred-site.xml</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Hadoop运行模式"><a href="#Hadoop运行模式" class="headerlink" title="Hadoop运行模式"></a>Hadoop运行模式</h2><ul>
+<li>本地模式</li>
+<li>伪分布式</li>
+<li>完全分布式</li>
+<li></li>
+</ul>
+]]></content>
+      <categories>
+        <category>大数据</category>
+      </categories>
+      <tags>
+        <tag>Hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java数字金额大写转换</title>
     <url>/2019/03/17/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D%E5%A4%A7%E5%86%99%E8%BD%AC%E6%8D%A2/</url>
     <content><![CDATA[<p><img src="https://oss.forestyoung.top/Java%E6%95%B0%E5%AD%97%E9%87%91%E9%A2%9D.jpg" alt=""></p>
@@ -48,55 +75,22 @@
       </tags>
   </entry>
   <entry>
-    <title>Hadoop</title>
-    <url>/2020/05/09/Hadoop%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<p><img src="https://oss.forestyoung.top/river-5134258_1920.jpg" alt=""></p>
+    <title>Json反序列化错误</title>
+    <url>/2020/09/07/Json%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%94%99%E8%AF%AF/</url>
+    <content><![CDATA[<p><img src="https://oss.forestyoung.top/woman-5526487_1920.jpg" alt=""></p>
 <a id="more"></a>
 
-<h3 id="jdk安装"><a href="#jdk安装" class="headerlink" title="jdk安装"></a>jdk安装</h3><p>系统：CentOS</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看yum包含的jdk版本</span></span><br><span class="line">[root@ ~]# yum search java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装JDK</span></span><br><span class="line">[root@ ~]# yum install java-1.8.0-openjdk-devel.x86_64</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量前，需要定位到jdk安装目录</span></span><br><span class="line">[root@ ~]# which java</span><br><span class="line">/usr/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 再找到/usr/bin/java的超链接位置发现还是超链接</span></span><br><span class="line">[root@ ~]# ls -lrt /usr/bin/java</span><br><span class="line">/usr/bin/java -&gt; /etc/alternatives/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 对超链接再次查询，发现最终位置</span></span><br><span class="line">[root@ ~]# ls -lrt /etc/alternatives/java</span><br><span class="line">/etc/alternatives/java -&gt; /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/jre/bin/java</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置环境变量</span></span><br><span class="line">[root@ ~]# vim /etc/profile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置下列信息，JAVA_HOME需要配置为刚查询出来的jdk目录</span></span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使配置生效</span></span><br><span class="line">[root@ ~]# source /etc/profile</span><br></pre></td></tr></table></figure>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String type;</span><br><span class="line">    <span class="keyword">private</span> Size size;</span><br><span class="line">    <span class="meta">@Data</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Size</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Integer length;</span><br><span class="line">        <span class="keyword">private</span> Integer width;</span><br><span class="line">        <span class="keyword">private</span> List&lt;Nmd&gt; nmd;</span><br><span class="line">        <span class="meta">@Data</span></span><br><span class="line">        <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Nmd</span> </span>&#123;</span><br><span class="line">            <span class="keyword">private</span> String name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClassTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">         String json = <span class="string">"&#123;\n"</span> +</span><br><span class="line">                <span class="string">"    \"type\": \"bba\",\n"</span> +</span><br><span class="line">                <span class="string">"    \"size\": &#123;\n"</span> +</span><br><span class="line">                <span class="string">"        \"length\": 5,\n"</span> +</span><br><span class="line">                <span class="string">"        \"width\": 3,\n"</span> +</span><br><span class="line">                <span class="string">"        \"nmd\": [\n"</span> +</span><br><span class="line">                <span class="string">"            &#123;\n"</span> +</span><br><span class="line">                <span class="string">"                \"name\": \"123\"\n"</span> +</span><br><span class="line">                <span class="string">"            &#125;\n"</span> +</span><br><span class="line">                <span class="string">"        ]\n"</span> +</span><br><span class="line">                <span class="string">"    &#125;\n"</span> +</span><br><span class="line">                <span class="string">"&#125;"</span>;</span><br><span class="line">        ObjectMapper objectMapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">        Car car = objectMapper.readValue(json, Car<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>运行main方法控制台报错</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of &#96;com.forest.concurrency.Car$Size$Nmd&#96; (although at least one Creator exists): can only instantiate non-static inner class by using default, no-argument constructor</span><br><span class="line"> at [Source: (String)&quot;&#123;</span><br><span class="line">    &quot;type&quot;: &quot;bba&quot;,</span><br><span class="line">    &quot;size&quot;: &#123;</span><br><span class="line">        &quot;length&quot;: 5,</span><br><span class="line">        &quot;width&quot;: 3,</span><br><span class="line">        &quot;nmd&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;name&quot;: &quot;123&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&quot;; line: 8, column: 17] (through reference chain: com.forest.concurrency.Car[&quot;size&quot;]-&gt;com.forest.concurrency.Car$Size[&quot;nmd&quot;]-&gt;java.util.ArrayList[0])</span><br></pre></td></tr></table></figure>
 
-<h3 id="Hadoop安装"><a href="#Hadoop安装" class="headerlink" title="Hadoop安装"></a>Hadoop安装</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下载包</span></span><br><span class="line">[root@ ~]# wget http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压</span></span><br><span class="line">[root@ ~]# tar -zxvf hadoop-3.1.3.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置</span></span><br><span class="line">[root@ ~]# cd /hadoop-3.1.3/etc/hadoop</span><br><span class="line"><span class="meta">#</span><span class="bash"> 三个配置文件配置core-site.xml，hdfs-site.xml，mapred-site.xml</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Hadoop运行模式"><a href="#Hadoop运行模式" class="headerlink" title="Hadoop运行模式"></a>Hadoop运行模式</h2><ul>
-<li>本地模式</li>
-<li>伪分布式</li>
-<li>完全分布式</li>
-<li></li>
-</ul>
+<h3 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h3><p>参考博客：<a href="https://blog.csdn.net/zhangxiaoyang0/article/details/86022122" target="_blank" rel="noopener">https://blog.csdn.net/zhangxiaoyang0/article/details/86022122</a><br>问题本质为：内部非静态类无法实例化<br>按照博主的解决方法</p>
 ]]></content>
       <categories>
-        <category>大数据</category>
+        <category>开发问题</category>
       </categories>
       <tags>
-        <tag>Hadoop</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Session过期时间</title>
-    <url>/2020/05/17/Session%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4/</url>
-    <content><![CDATA[<p><img src="https://oss.forestyoung.top/lighthouse-5286823_1920.jpg" alt=""></p>
-<a id="more"></a>
-
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>项目使用cookie和session实现用户认证，在使用过程中通过设置session的过期时间来达到超时自动退出登录的效果</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"> 		<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * session过期时间15分钟(session默认过期时间为半小时，这里设置15分钟与默认时间区分，防止时间混淆)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_TIME = <span class="number">15</span> * <span class="number">60</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用户登录</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> Forest</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2020/4/28 18:17</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"login"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultData <span class="title">login</span><span class="params">(HttpServletRequest request, @RequestBody UserDTO user)</span> </span>&#123;</span><br><span class="line">        ResultData resultData = userService.login(user);</span><br><span class="line">        <span class="keyword">if</span> (resultData.isSucceed()) &#123;</span><br><span class="line">            <span class="comment">// 登录后设置session过期时间半小时</span></span><br><span class="line">            HttpSession session = request.getSession();</span><br><span class="line">            session.setAttribute(<span class="string">"isLogin"</span>, <span class="string">"y"</span>);</span><br><span class="line">            session.setAttribute(<span class="string">"userName"</span>, user.getUserName());</span><br><span class="line">            session.setMaxInactiveInterval(MAX_TIME);</span><br><span class="line">            log.info(<span class="string">"用户:&#123;&#125;登录成功"</span>, user.getUserName());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultData;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>于是猜测是不是可以设置过期时间为0或负数来达到使session失效的效果，从而实现退出登录功能</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">session.setMaxInactiveInterval(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// 或者任意负数</span></span><br><span class="line">session.setMaxInactiveInterval(-<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
-<p>debug发现当调用完登出接口后，session依然存在</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 用户登出</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@author</span> Forest</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@date</span> 2020/5/17 5:36 下午</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@PostMapping</span>(<span class="string">"loginOut"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> ResultData <span class="title">loginOut</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">      HttpSession session = request.getSession();</span><br><span class="line">      log.info(<span class="string">"用户：&#123;&#125;登出"</span>, session.getAttribute(<span class="string">"userName"</span>));</span><br><span class="line">      session.setMaxInactiveInterval(<span class="number">0</span>);</span><br><span class="line">      <span class="keyword">return</span> ResultDataUtils.getSuccessResult(<span class="string">"登出成功"</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2>]]></content>
-      <categories>
-        <category>代码实现</category>
-      </categories>
-      <tags>
-        <tag>JavaWeb</tag>
+        <tag>其它</tag>
       </tags>
   </entry>
   <entry>
@@ -152,6 +146,31 @@
       </categories>
       <tags>
         <tag>HTTP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Session过期时间</title>
+    <url>/2020/05/17/Session%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<p><img src="https://oss.forestyoung.top/lighthouse-5286823_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>项目使用cookie和session实现用户认证，在使用过程中通过设置session的过期时间来达到超时自动退出登录的效果</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"> 		<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * session过期时间15分钟(session默认过期时间为半小时，这里设置15分钟与默认时间区分，防止时间混淆)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_TIME = <span class="number">15</span> * <span class="number">60</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用户登录</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> Forest</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2020/4/28 18:17</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"login"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultData <span class="title">login</span><span class="params">(HttpServletRequest request, @RequestBody UserDTO user)</span> </span>&#123;</span><br><span class="line">        ResultData resultData = userService.login(user);</span><br><span class="line">        <span class="keyword">if</span> (resultData.isSucceed()) &#123;</span><br><span class="line">            <span class="comment">// 登录后设置session过期时间半小时</span></span><br><span class="line">            HttpSession session = request.getSession();</span><br><span class="line">            session.setAttribute(<span class="string">"isLogin"</span>, <span class="string">"y"</span>);</span><br><span class="line">            session.setAttribute(<span class="string">"userName"</span>, user.getUserName());</span><br><span class="line">            session.setMaxInactiveInterval(MAX_TIME);</span><br><span class="line">            log.info(<span class="string">"用户:&#123;&#125;登录成功"</span>, user.getUserName());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultData;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>于是猜测是不是可以设置过期时间为0或负数来达到使session失效的效果，从而实现退出登录功能</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">session.setMaxInactiveInterval(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// 或者任意负数</span></span><br><span class="line">session.setMaxInactiveInterval(-<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>debug发现当调用完登出接口后，session依然存在</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 用户登出</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@author</span> Forest</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@date</span> 2020/5/17 5:36 下午</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@PostMapping</span>(<span class="string">"loginOut"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> ResultData <span class="title">loginOut</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">      HttpSession session = request.getSession();</span><br><span class="line">      log.info(<span class="string">"用户：&#123;&#125;登出"</span>, session.getAttribute(<span class="string">"userName"</span>));</span><br><span class="line">      session.setMaxInactiveInterval(<span class="number">0</span>);</span><br><span class="line">      <span class="keyword">return</span> ResultDataUtils.getSuccessResult(<span class="string">"登出成功"</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2>]]></content>
+      <categories>
+        <category>代码实现</category>
+      </categories>
+      <tags>
+        <tag>JavaWeb</tag>
       </tags>
   </entry>
   <entry>
@@ -315,6 +334,7 @@
 <p><a href="https://juejin.im/post/5c1200ece51d4560f0435795" target="_blank" rel="noopener">基于 JWT + Refresh Token 的用户认证实践</a></p>
 <p><img src="https://oss.forestyoung.top/refreshtoken%E8%AF%B4%E6%98%8E.png" alt=""></p>
 <p><a href="https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html" target="_blank" rel="noopener">JSON Web Token 入门教程</a></p>
+<p><a href="https://www.cnblogs.com/fashflying/p/6908028.html" target="_blank" rel="noopener">Spring缓存注解@Cacheable、@CacheEvict、@CachePut使用</a></p>
 ]]></content>
       <categories>
         <category>开发问题</category>
@@ -330,6 +350,9 @@
 <a id="more"></a>
 
 <p><a href="https://blog.csdn.net/jiao_zg/article/details/78911469" target="_blank" rel="noopener">匿名内部类访问局部变量加final修饰的问题</a></p>
+<p><a href="https://blog.csdn.net/justry_deng/article/details/80972817" target="_blank" rel="noopener">@RequestBody的使用</a></p>
+<p><a href="https://blog.csdn.net/shadow_zed/article/details/73478298" target="_blank" rel="noopener">BigDecimal比较大小问题</a></p>
+<p><a href="https://tech.meituan.com/2018/01/19/mybatis-cache.html" target="_blank" rel="noopener">MyBatis缓存机制</a></p>
 ]]></content>
       <categories>
         <category>Java基础</category>
