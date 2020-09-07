@@ -1,6 +1,6 @@
 ---
 
-title: Cache使用
+title: Spring Cache使用
 date: 2020-09-08 01:00:25
 categories: spring
 tags: 缓存
