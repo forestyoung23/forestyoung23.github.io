@@ -75,6 +75,25 @@
       </tags>
   </entry>
   <entry>
+    <title>Json反序列化错误</title>
+    <url>/2020/09/07/Json%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%94%99%E8%AF%AF/</url>
+    <content><![CDATA[<p><img src="https://oss.forestyoung.top/woman-5526487_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String type;</span><br><span class="line">    <span class="keyword">private</span> Size size;</span><br><span class="line">    <span class="meta">@Data</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Size</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Integer length;</span><br><span class="line">        <span class="keyword">private</span> Integer width;</span><br><span class="line">        <span class="keyword">private</span> List&lt;Nmd&gt; nmd;</span><br><span class="line">        <span class="meta">@Data</span></span><br><span class="line">        <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Nmd</span> </span>&#123;</span><br><span class="line">            <span class="keyword">private</span> String name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClassTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">         String json = <span class="string">"&#123;\n"</span> +</span><br><span class="line">                <span class="string">"    \"type\": \"bba\",\n"</span> +</span><br><span class="line">                <span class="string">"    \"size\": &#123;\n"</span> +</span><br><span class="line">                <span class="string">"        \"length\": 5,\n"</span> +</span><br><span class="line">                <span class="string">"        \"width\": 3,\n"</span> +</span><br><span class="line">                <span class="string">"        \"nmd\": [\n"</span> +</span><br><span class="line">                <span class="string">"            &#123;\n"</span> +</span><br><span class="line">                <span class="string">"                \"name\": \"123\"\n"</span> +</span><br><span class="line">                <span class="string">"            &#125;\n"</span> +</span><br><span class="line">                <span class="string">"        ]\n"</span> +</span><br><span class="line">                <span class="string">"    &#125;\n"</span> +</span><br><span class="line">                <span class="string">"&#125;"</span>;</span><br><span class="line">        ObjectMapper objectMapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">        Car car = objectMapper.readValue(json, Car<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>运行main方法控制台报错</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of &#96;com.forest.concurrency.Car$Size$Nmd&#96; (although at least one Creator exists): can only instantiate non-static inner class by using default, no-argument constructor</span><br><span class="line"> at [Source: (String)&quot;&#123;</span><br><span class="line">    &quot;type&quot;: &quot;bba&quot;,</span><br><span class="line">    &quot;size&quot;: &#123;</span><br><span class="line">        &quot;length&quot;: 5,</span><br><span class="line">        &quot;width&quot;: 3,</span><br><span class="line">        &quot;nmd&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;name&quot;: &quot;123&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&quot;; line: 8, column: 17] (through reference chain: com.forest.concurrency.Car[&quot;size&quot;]-&gt;com.forest.concurrency.Car$Size[&quot;nmd&quot;]-&gt;java.util.ArrayList[0])</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h3><p>参考博客：<a href="https://blog.csdn.net/zhangxiaoyang0/article/details/86022122" target="_blank" rel="noopener">https://blog.csdn.net/zhangxiaoyang0/article/details/86022122</a><br>问题本质为：内部非静态类无法实例化<br>按照博主的解决方法</p>
+]]></content>
+      <categories>
+        <category>开发问题</category>
+      </categories>
+      <tags>
+        <tag>其它</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Session过期时间</title>
     <url>/2020/05/17/Session%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4/</url>
     <content><![CDATA[<p><img src="https://oss.forestyoung.top/lighthouse-5286823_1920.jpg" alt=""></p>
@@ -97,25 +116,6 @@
       </categories>
       <tags>
         <tag>JavaWeb</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Json反序列化错误</title>
-    <url>/2020/09/07/Json%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%94%99%E8%AF%AF/</url>
-    <content><![CDATA[<p><img src="https://oss.forestyoung.top/woman-5526487_1920.jpg" alt=""></p>
-<a id="more"></a>
-
-<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String type;</span><br><span class="line">    <span class="keyword">private</span> Size size;</span><br><span class="line">    <span class="meta">@Data</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Size</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Integer length;</span><br><span class="line">        <span class="keyword">private</span> Integer width;</span><br><span class="line">        <span class="keyword">private</span> List&lt;Nmd&gt; nmd;</span><br><span class="line">        <span class="meta">@Data</span></span><br><span class="line">        <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Nmd</span> </span>&#123;</span><br><span class="line">            <span class="keyword">private</span> String name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClassTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">         String json = <span class="string">"&#123;\n"</span> +</span><br><span class="line">                <span class="string">"    \"type\": \"bba\",\n"</span> +</span><br><span class="line">                <span class="string">"    \"size\": &#123;\n"</span> +</span><br><span class="line">                <span class="string">"        \"length\": 5,\n"</span> +</span><br><span class="line">                <span class="string">"        \"width\": 3,\n"</span> +</span><br><span class="line">                <span class="string">"        \"nmd\": [\n"</span> +</span><br><span class="line">                <span class="string">"            &#123;\n"</span> +</span><br><span class="line">                <span class="string">"                \"name\": \"123\"\n"</span> +</span><br><span class="line">                <span class="string">"            &#125;\n"</span> +</span><br><span class="line">                <span class="string">"        ]\n"</span> +</span><br><span class="line">                <span class="string">"    &#125;\n"</span> +</span><br><span class="line">                <span class="string">"&#125;"</span>;</span><br><span class="line">        ObjectMapper objectMapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">        Car car = objectMapper.readValue(json, Car<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>运行main方法控制台报错</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of &#96;com.forest.concurrency.Car$Size$Nmd&#96; (although at least one Creator exists): can only instantiate non-static inner class by using default, no-argument constructor</span><br><span class="line"> at [Source: (String)&quot;&#123;</span><br><span class="line">    &quot;type&quot;: &quot;bba&quot;,</span><br><span class="line">    &quot;size&quot;: &#123;</span><br><span class="line">        &quot;length&quot;: 5,</span><br><span class="line">        &quot;width&quot;: 3,</span><br><span class="line">        &quot;nmd&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;name&quot;: &quot;123&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&quot;; line: 8, column: 17] (through reference chain: com.forest.concurrency.Car[&quot;size&quot;]-&gt;com.forest.concurrency.Car$Size[&quot;nmd&quot;]-&gt;java.util.ArrayList[0])</span><br></pre></td></tr></table></figure>
-
-<h3 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h3><p>参考博客：<a href="https://blog.csdn.net/zhangxiaoyang0/article/details/86022122" target="_blank" rel="noopener">https://blog.csdn.net/zhangxiaoyang0/article/details/86022122</a><br>问题本质为：内部非静态类无法实例化<br>按照博主的解决方法</p>
-]]></content>
-      <categories>
-        <category>开发问题</category>
-      </categories>
-      <tags>
-        <tag>其它</tag>
       </tags>
   </entry>
   <entry>
@@ -353,11 +353,40 @@
 <p><a href="https://juejin.im/post/5c1200ece51d4560f0435795" target="_blank" rel="noopener">基于 JWT + Refresh Token 的用户认证实践</a></p>
 <p><img src="https://oss.forestyoung.top/refreshtoken%E8%AF%B4%E6%98%8E.png" alt=""></p>
 <p><a href="https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html" target="_blank" rel="noopener">JSON Web Token 入门教程</a></p>
+<p><a href="https://www.jianshu.com/p/973d224281e4" target="_blank" rel="noopener">注解</a></p>
 <p><a href="https://www.jianshu.com/p/d6bba708100d" target="_blank" rel="noopener">@AliasFor注解</a></p>
 <p><a href="https://www.cnblogs.com/fashflying/p/6908028.html" target="_blank" rel="noopener">Spring缓存注解@Cacheable、@CacheEvict、@CachePut使用</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Documented</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Target(ElementType.ANNOTATION_TYPE)</span><br><span class="line">public @interface Retention &#123;</span><br><span class="line">    &#x2F;**</span><br><span class="line">     * Returns the retention policy.</span><br><span class="line">     * @return the retention policy</span><br><span class="line">     *&#x2F;</span><br><span class="line">    RetentionPolicy value();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public enum RetentionPolicy &#123;</span><br><span class="line">    &#x2F;**</span><br><span class="line">     * Annotations are to be discarded by the compiler.</span><br><span class="line">     * 批注将被编译器丢弃。编译器处理该类型注解</span><br><span class="line">     *&#x2F;</span><br><span class="line">    SOURCE,</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * Annotations are to be recorded in the class file by the compiler</span><br><span class="line">     * but need not be retained by the VM at run time.  This is the default</span><br><span class="line">     * behavior.</span><br><span class="line">     * 注释将由编译器记录在类文件中，但不必在运行时由VM保留。这是默认的行为。</span><br><span class="line">     * 处理class类型的工具能够处理该类型注解</span><br><span class="line">     *&#x2F;</span><br><span class="line">    CLASS,</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * Annotations are to be recorded in the class file by the compiler and</span><br><span class="line">     * retained by the VM at run time, so they may be read reflectively.</span><br><span class="line">     * 注释由编译器记录在类文件中，并在运行时由VM保留，因此可以通过反射方式读取它们。</span><br><span class="line">     * 运行时处理</span><br><span class="line">     * @see java.lang.reflect.AnnotatedElement</span><br><span class="line">     *&#x2F;</span><br><span class="line">    RUNTIME</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用RUNTIME类型的注解</p>
+<ul>
+<li>Annotation也是class</li>
+<li>所有的Annotation继承自java.lang.annotation.Annotation</li>
+<li>使用反射API</li>
+</ul>
+</blockquote>
 ]]></content>
       <categories>
         <category>开发问题</category>
+      </categories>
+      <tags>
+        <tag>其它</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java基础</title>
+    <url>/2020/06/18/%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p><img src="https://oss.forestyoung.top/wind-turbine-5163993_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<p><a href="https://blog.csdn.net/jiao_zg/article/details/78911469" target="_blank" rel="noopener">匿名内部类访问局部变量加final修饰的问题</a></p>
+<p><a href="https://blog.csdn.net/justry_deng/article/details/80972817" target="_blank" rel="noopener">@RequestBody的使用</a></p>
+<p><a href="https://blog.csdn.net/shadow_zed/article/details/73478298" target="_blank" rel="noopener">BigDecimal比较大小问题</a></p>
+<p><a href="https://tech.meituan.com/2018/01/19/mybatis-cache.html" target="_blank" rel="noopener">MyBatis缓存机制</a></p>
+]]></content>
+      <categories>
+        <category>Java基础</category>
       </categories>
       <tags>
         <tag>其它</tag>
@@ -396,24 +425,6 @@
       </categories>
       <tags>
         <tag>阿里云</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java基础</title>
-    <url>/2020/06/18/%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p><img src="https://oss.forestyoung.top/wind-turbine-5163993_1920.jpg" alt=""></p>
-<a id="more"></a>
-
-<p><a href="https://blog.csdn.net/jiao_zg/article/details/78911469" target="_blank" rel="noopener">匿名内部类访问局部变量加final修饰的问题</a></p>
-<p><a href="https://blog.csdn.net/justry_deng/article/details/80972817" target="_blank" rel="noopener">@RequestBody的使用</a></p>
-<p><a href="https://blog.csdn.net/shadow_zed/article/details/73478298" target="_blank" rel="noopener">BigDecimal比较大小问题</a></p>
-<p><a href="https://tech.meituan.com/2018/01/19/mybatis-cache.html" target="_blank" rel="noopener">MyBatis缓存机制</a></p>
-]]></content>
-      <categories>
-        <category>Java基础</category>
-      </categories>
-      <tags>
-        <tag>其它</tag>
       </tags>
   </entry>
 </search>
