@@ -111,7 +111,7 @@ symbols_count_time:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   - type: git
-    repo: root@120.78.214.130:blog.git
+    repo: root@121.4.247.157:/root/blog/blog.git
     branch: master
   - type: git
     repo: git@github.com:forestyoung23/forestyoung23.github.io.git
