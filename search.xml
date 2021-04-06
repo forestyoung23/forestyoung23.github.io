@@ -75,6 +75,25 @@
       </tags>
   </entry>
   <entry>
+    <title>Json反序列化错误</title>
+    <url>/2020/09/07/Json%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%94%99%E8%AF%AF/</url>
+    <content><![CDATA[<p><img src="https://oss.forestyoung.top/woman-5526487_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String type;</span><br><span class="line">    <span class="keyword">private</span> Size size;</span><br><span class="line">    <span class="meta">@Data</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Size</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Integer length;</span><br><span class="line">        <span class="keyword">private</span> Integer width;</span><br><span class="line">        <span class="keyword">private</span> List&lt;Nmd&gt; nmd;</span><br><span class="line">        <span class="meta">@Data</span></span><br><span class="line">        <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Nmd</span> </span>&#123;</span><br><span class="line">            <span class="keyword">private</span> String name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClassTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">         String json = <span class="string">"&#123;\n"</span> +</span><br><span class="line">                <span class="string">"    \"type\": \"bba\",\n"</span> +</span><br><span class="line">                <span class="string">"    \"size\": &#123;\n"</span> +</span><br><span class="line">                <span class="string">"        \"length\": 5,\n"</span> +</span><br><span class="line">                <span class="string">"        \"width\": 3,\n"</span> +</span><br><span class="line">                <span class="string">"        \"nmd\": [\n"</span> +</span><br><span class="line">                <span class="string">"            &#123;\n"</span> +</span><br><span class="line">                <span class="string">"                \"name\": \"123\"\n"</span> +</span><br><span class="line">                <span class="string">"            &#125;\n"</span> +</span><br><span class="line">                <span class="string">"        ]\n"</span> +</span><br><span class="line">                <span class="string">"    &#125;\n"</span> +</span><br><span class="line">                <span class="string">"&#125;"</span>;</span><br><span class="line">        ObjectMapper objectMapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">        Car car = objectMapper.readValue(json, Car<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>运行main方法控制台报错</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of &#96;com.forest.concurrency.Car$Size$Nmd&#96; (although at least one Creator exists): can only instantiate non-static inner class by using default, no-argument constructor</span><br><span class="line"> at [Source: (String)&quot;&#123;</span><br><span class="line">    &quot;type&quot;: &quot;bba&quot;,</span><br><span class="line">    &quot;size&quot;: &#123;</span><br><span class="line">        &quot;length&quot;: 5,</span><br><span class="line">        &quot;width&quot;: 3,</span><br><span class="line">        &quot;nmd&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;name&quot;: &quot;123&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&quot;; line: 8, column: 17] (through reference chain: com.forest.concurrency.Car[&quot;size&quot;]-&gt;com.forest.concurrency.Car$Size[&quot;nmd&quot;]-&gt;java.util.ArrayList[0])</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h3><p>参考博客：<a href="https://blog.csdn.net/zhangxiaoyang0/article/details/86022122" target="_blank" rel="noopener">https://blog.csdn.net/zhangxiaoyang0/article/details/86022122</a><br>问题本质为：内部非静态类无法实例化<br>按照博主的解决方法</p>
+]]></content>
+      <categories>
+        <category>开发问题</category>
+      </categories>
+      <tags>
+        <tag>其它</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL连接异常记录</title>
     <url>/2021/04/02/MySQL%E8%BF%9E%E6%8E%A5%E5%BC%82%E5%B8%B8%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<p><img src="https://oss.forestyoung.top/freedom-4737919_1920.jpg" alt=""></p>
@@ -92,22 +111,16 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Json反序列化错误</title>
-    <url>/2020/09/07/Json%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%94%99%E8%AF%AF/</url>
-    <content><![CDATA[<p><img src="https://oss.forestyoung.top/woman-5526487_1920.jpg" alt=""></p>
+    <title>Hexo常用命令</title>
+    <url>/2021/01/24/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p><img src="https://oss.forestyoung.top/sunset-5801050_1920.jpg" alt=""></p>
 <a id="more"></a>
 
-<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String type;</span><br><span class="line">    <span class="keyword">private</span> Size size;</span><br><span class="line">    <span class="meta">@Data</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Size</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Integer length;</span><br><span class="line">        <span class="keyword">private</span> Integer width;</span><br><span class="line">        <span class="keyword">private</span> List&lt;Nmd&gt; nmd;</span><br><span class="line">        <span class="meta">@Data</span></span><br><span class="line">        <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Nmd</span> </span>&#123;</span><br><span class="line">            <span class="keyword">private</span> String name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClassTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">         String json = <span class="string">"&#123;\n"</span> +</span><br><span class="line">                <span class="string">"    \"type\": \"bba\",\n"</span> +</span><br><span class="line">                <span class="string">"    \"size\": &#123;\n"</span> +</span><br><span class="line">                <span class="string">"        \"length\": 5,\n"</span> +</span><br><span class="line">                <span class="string">"        \"width\": 3,\n"</span> +</span><br><span class="line">                <span class="string">"        \"nmd\": [\n"</span> +</span><br><span class="line">                <span class="string">"            &#123;\n"</span> +</span><br><span class="line">                <span class="string">"                \"name\": \"123\"\n"</span> +</span><br><span class="line">                <span class="string">"            &#125;\n"</span> +</span><br><span class="line">                <span class="string">"        ]\n"</span> +</span><br><span class="line">                <span class="string">"    &#125;\n"</span> +</span><br><span class="line">                <span class="string">"&#125;"</span>;</span><br><span class="line">        ObjectMapper objectMapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">        Car car = objectMapper.readValue(json, Car<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>运行main方法控制台报错</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of &#96;com.forest.concurrency.Car$Size$Nmd&#96; (although at least one Creator exists): can only instantiate non-static inner class by using default, no-argument constructor</span><br><span class="line"> at [Source: (String)&quot;&#123;</span><br><span class="line">    &quot;type&quot;: &quot;bba&quot;,</span><br><span class="line">    &quot;size&quot;: &#123;</span><br><span class="line">        &quot;length&quot;: 5,</span><br><span class="line">        &quot;width&quot;: 3,</span><br><span class="line">        &quot;nmd&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;name&quot;: &quot;123&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&quot;; line: 8, column: 17] (through reference chain: com.forest.concurrency.Car[&quot;size&quot;]-&gt;com.forest.concurrency.Car$Size[&quot;nmd&quot;]-&gt;java.util.ArrayList[0])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init   &#x2F;&#x2F;初始化</span><br><span class="line"></span><br><span class="line">hexo new &quot;page name&quot;  &#x2F;&#x2F; 新建page</span><br><span class="line">hexo clean  &#x2F;&#x2F; 清除本地缓存</span><br><span class="line">hexo g     &#x2F;&#x2F; 生成页面</span><br><span class="line">hexo s     &#x2F;&#x2F; 启动服务，本地预览</span><br><span class="line">hexo d     &#x2F;&#x2F; 部署</span><br></pre></td></tr></table></figure>
 
-<h3 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h3><p>参考博客：<a href="https://blog.csdn.net/zhangxiaoyang0/article/details/86022122" target="_blank" rel="noopener">https://blog.csdn.net/zhangxiaoyang0/article/details/86022122</a><br>问题本质为：内部非静态类无法实例化<br>按照博主的解决方法</p>
 ]]></content>
-      <categories>
-        <category>开发问题</category>
-      </categories>
       <tags>
-        <tag>其它</tag>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -345,6 +358,31 @@
       </tags>
   </entry>
   <entry>
+    <title>Session过期时间</title>
+    <url>/2020/05/17/Session%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<p><img src="https://oss.forestyoung.top/lighthouse-5286823_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>项目使用cookie和session实现用户认证，在使用过程中通过设置session的过期时间来达到超时自动退出登录的效果</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"> 		<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * session过期时间15分钟(session默认过期时间为半小时，这里设置15分钟与默认时间区分，防止时间混淆)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_TIME = <span class="number">15</span> * <span class="number">60</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用户登录</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> Forest</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2020/4/28 18:17</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"login"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultData <span class="title">login</span><span class="params">(HttpServletRequest request, @RequestBody UserDTO user)</span> </span>&#123;</span><br><span class="line">        ResultData resultData = userService.login(user);</span><br><span class="line">        <span class="keyword">if</span> (resultData.isSucceed()) &#123;</span><br><span class="line">            <span class="comment">// 登录后设置session过期时间半小时</span></span><br><span class="line">            HttpSession session = request.getSession();</span><br><span class="line">            session.setAttribute(<span class="string">"isLogin"</span>, <span class="string">"y"</span>);</span><br><span class="line">            session.setAttribute(<span class="string">"userName"</span>, user.getUserName());</span><br><span class="line">            session.setMaxInactiveInterval(MAX_TIME);</span><br><span class="line">            log.info(<span class="string">"用户:&#123;&#125;登录成功"</span>, user.getUserName());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultData;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>于是猜测是不是可以设置过期时间为0或负数来达到使session失效的效果，从而实现退出登录功能</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">session.setMaxInactiveInterval(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// 或者任意负数</span></span><br><span class="line">session.setMaxInactiveInterval(-<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>debug发现当调用完登出接口后，session依然存在</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 用户登出</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@author</span> Forest</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@date</span> 2020/5/17 5:36 下午</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@PostMapping</span>(<span class="string">"loginOut"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> ResultData <span class="title">loginOut</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">      HttpSession session = request.getSession();</span><br><span class="line">      log.info(<span class="string">"用户：&#123;&#125;登出"</span>, session.getAttribute(<span class="string">"userName"</span>));</span><br><span class="line">      session.setMaxInactiveInterval(<span class="number">0</span>);</span><br><span class="line">      <span class="keyword">return</span> ResultDataUtils.getSuccessResult(<span class="string">"登出成功"</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2>]]></content>
+      <categories>
+        <category>代码实现</category>
+      </categories>
+      <tags>
+        <tag>JavaWeb</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python基础</title>
     <url>/2021/01/24/Python%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<p><img src="https://oss.forestyoung.top/field-5430070_1920.jpg" alt=""></p>
@@ -578,16 +616,22 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo常用命令</title>
-    <url>/2021/01/24/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p><img src="https://oss.forestyoung.top/sunset-5801050_1920.jpg" alt=""></p>
+    <title>Spring Cache使用</title>
+    <url>/2020/09/08/Spring%20Cache%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><img src="https://oss.forestyoung.top/huangpu-river-5501210_1920.jpg" alt=""></p>
 <a id="more"></a>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init   &#x2F;&#x2F;初始化</span><br><span class="line"></span><br><span class="line">hexo new &quot;page name&quot;  &#x2F;&#x2F; 新建page</span><br><span class="line">hexo clean  &#x2F;&#x2F; 清除本地缓存</span><br><span class="line">hexo g     &#x2F;&#x2F; 生成页面</span><br><span class="line">hexo s     &#x2F;&#x2F; 启动服务，本地预览</span><br><span class="line">hexo d     &#x2F;&#x2F; 部署</span><br></pre></td></tr></table></figure>
-
+<h3 id="相关依赖"><a href="#相关依赖" class="headerlink" title="相关依赖"></a>相关依赖</h3><p>在 Spring 3.1 中引入了多 Cache 的支持，在 spring-context 包中已包含，所以只用引入spring-context包即可</p>
+<h3 id="使用注意"><a href="#使用注意" class="headerlink" title="使用注意"></a>使用注意</h3><p>需要在启动类加上<strong>@EnableCaching</strong>注解</p>
+<p>被缓存对象需要实现Serializable接口</p>
+<h3 id="参考博文"><a href="#参考博文" class="headerlink" title="参考博文"></a>参考博文</h3><p><a href="https://juejin.im/post/6844903966615011335" target="_blank" rel="noopener">Spring Boot 2.X(七)：Spring Cache 使用</a></p>
+<p><a href="https://www.cnblogs.com/fashflying/p/6908028.html" target="_blank" rel="noopener">Spring缓存注解@Cacheable、@CacheEvict、@CachePut使用</a></p>
 ]]></content>
+      <categories>
+        <category>spring</category>
+      </categories>
       <tags>
-        <tag>hexo</tag>
+        <tag>缓存</tag>
       </tags>
   </entry>
   <entry>
@@ -646,25 +690,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Spring Cache使用</title>
-    <url>/2020/09/08/Spring%20Cache%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><img src="https://oss.forestyoung.top/huangpu-river-5501210_1920.jpg" alt=""></p>
-<a id="more"></a>
-
-<h3 id="相关依赖"><a href="#相关依赖" class="headerlink" title="相关依赖"></a>相关依赖</h3><p>在 Spring 3.1 中引入了多 Cache 的支持，在 spring-context 包中已包含，所以只用引入spring-context包即可</p>
-<h3 id="使用注意"><a href="#使用注意" class="headerlink" title="使用注意"></a>使用注意</h3><p>需要在启动类加上<strong>@EnableCaching</strong>注解</p>
-<p>被缓存对象需要实现Serializable接口</p>
-<h3 id="参考博文"><a href="#参考博文" class="headerlink" title="参考博文"></a>参考博文</h3><p><a href="https://juejin.im/post/6844903966615011335" target="_blank" rel="noopener">Spring Boot 2.X(七)：Spring Cache 使用</a></p>
-<p><a href="https://www.cnblogs.com/fashflying/p/6908028.html" target="_blank" rel="noopener">Spring缓存注解@Cacheable、@CacheEvict、@CachePut使用</a></p>
-]]></content>
-      <categories>
-        <category>spring</category>
-      </categories>
-      <tags>
-        <tag>缓存</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Spring源码学习（一）：BeanFactory</title>
     <url>/2021/04/02/Spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9ABeanFactory/</url>
     <content><![CDATA[<p><img src="https://oss.forestyoung.top/leaves-5610361_1920.png" alt=""></p>
@@ -682,6 +707,68 @@
 
 
 ]]></content>
+  </entry>
+  <entry>
+    <title>多线程的挑战</title>
+    <url>/2020/05/09/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%8C%91%E6%88%98/</url>
+    <content><![CDATA[<p><img src="https://oss.forestyoung.top/autumn-4875907_1920.jpg" alt=""></p>
+<a id="more"></a>
+
+<h3 id="多线程的挑战"><a href="#多线程的挑战" class="headerlink" title="多线程的挑战"></a>多线程的挑战</h3><ul>
+<li>上下文切换</li>
+<li>死锁</li>
+</ul>
+<h4 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h4><blockquote>
+<p>单核处理器也可通过CPU给每个线程分配时间片来实现多线程，因为时间片非常短，让人感觉是多个线程同时执行。</p>
+<p>问题：切换过程中需要保存上一个任务的状态以便后面切回时恢复</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">循环次数</th>
+<th align="left">串行执行耗时/ms</th>
+<th align="left">并发执行耗时/ms</th>
+<th align="left">并发比串行快多少</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1万</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">慢</td>
+</tr>
+<tr>
+<td align="left">10万</td>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left">慢</td>
+</tr>
+<tr>
+<td align="left">100万</td>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">差不多</td>
+</tr>
+<tr>
+<td align="left">1000万</td>
+<td align="left">9</td>
+<td align="left">6</td>
+<td align="left">1.5倍</td>
+</tr>
+<tr>
+<td align="left">1亿</td>
+<td align="left">54</td>
+<td align="left">31</td>
+<td align="left">接近1倍</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>多线程</category>
+      </categories>
+      <tags>
+        <tag>多线程问题</tag>
+      </tags>
   </entry>
   <entry>
     <title>大数据和Hadoop概述</title>
@@ -761,128 +848,6 @@
       </tags>
   </entry>
   <entry>
-    <title>多线程的挑战</title>
-    <url>/2020/05/09/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%8C%91%E6%88%98/</url>
-    <content><![CDATA[<p><img src="https://oss.forestyoung.top/autumn-4875907_1920.jpg" alt=""></p>
-<a id="more"></a>
-
-<h3 id="多线程的挑战"><a href="#多线程的挑战" class="headerlink" title="多线程的挑战"></a>多线程的挑战</h3><ul>
-<li>上下文切换</li>
-<li>死锁</li>
-</ul>
-<h4 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h4><blockquote>
-<p>单核处理器也可通过CPU给每个线程分配时间片来实现多线程，因为时间片非常短，让人感觉是多个线程同时执行。</p>
-<p>问题：切换过程中需要保存上一个任务的状态以便后面切回时恢复</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="left">循环次数</th>
-<th align="left">串行执行耗时/ms</th>
-<th align="left">并发执行耗时/ms</th>
-<th align="left">并发比串行快多少</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1万</td>
-<td align="left">0</td>
-<td align="left">1</td>
-<td align="left">慢</td>
-</tr>
-<tr>
-<td align="left">10万</td>
-<td align="left">2</td>
-<td align="left">3</td>
-<td align="left">慢</td>
-</tr>
-<tr>
-<td align="left">100万</td>
-<td align="left">5</td>
-<td align="left">5</td>
-<td align="left">差不多</td>
-</tr>
-<tr>
-<td align="left">1000万</td>
-<td align="left">9</td>
-<td align="left">6</td>
-<td align="left">1.5倍</td>
-</tr>
-<tr>
-<td align="left">1亿</td>
-<td align="left">54</td>
-<td align="left">31</td>
-<td align="left">接近1倍</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>多线程</category>
-      </categories>
-      <tags>
-        <tag>多线程问题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>获取阿里云临时授权访问STStoken</title>
-    <url>/2019/03/07/%E8%8E%B7%E5%8F%96%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%B4%E6%97%B6%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AESTStoken/</url>
-    <content><![CDATA[<p><img src="https://oss.forestyoung.top/%E8%8E%B7%E5%8F%96STStoken.jpg" alt=""></p>
-<a id="more"></a>
-
-<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a href="https://www.alibabacloud.com/help/zh/doc-detail/27364.htm?spm=a2c63.p38356.b99.35.5c778d840l5Eaw" target="_blank" rel="noopener">阿里云官方文档</a><br><a href="https://help.aliyun.com/document_detail/28788.html?spm=a2c4g.11186623.6.645.7f4a7905JfcrXA" target="_blank" rel="noopener">相关SDK</a></p>
-<h3 id="RAM-和-STS-介绍"><a href="#RAM-和-STS-介绍" class="headerlink" title="RAM 和 STS 介绍"></a>RAM 和 STS 介绍</h3><blockquote>
-<p>阿里云权限管理机制包括访问控制（Resource Access Management，简称 RAM）和安全凭证管理（Security Token Service，简称 STS），可以根据需求使用不同权限的子账号来访问表格存储，也支持为用户提供访问的临时授权。使用RAM和STS能极大地提高管理的灵活性和安全性。</p>
-<p>RAM 的主要作用是控制账号系统的权限。通过使用 RAM 可以将在主账号的权限范围内创建子账号，给不同的子账号分配不同的权限，从而达到授权管理的目的。详情请参见<a href="https://www.alibabacloud.com/help/doc-detail/28627.htm" target="_blank" rel="noopener">访问控制产品帮忙文档</a>。</p>
-<p>STS 是一个安全凭证（Token）的管理系统，用来授予临时的访问权限，这样就可以通过 STS 来完成对于临时用户的访问授权。</p>
-</blockquote>
-<h3 id="STS临时授权访问"><a href="#STS临时授权访问" class="headerlink" title="STS临时授权访问"></a>STS临时授权访问</h3><blockquote>
-<p>RAM子账号都是可以长期正常使用的，发生泄露后如果无法及时解除权限，会非常危险。</p>
-<p>当开发者的 app 被用户使用之后，用户的数据要写入 ram-test-dev 这个实例。当 app 的用户数据很多时，要求能够安全地授权给众多的 app 用户上传数据，并且保证多个用户之间存储的隔离。</p>
-<p>类似这种场景需要临时访问权限，应该使用 STS 来完成。STS 可以指定复杂的策略来对特定的用户进行限制，仅提供最小的权限。</p>
-</blockquote>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p><strong>1.创建和管理角色STS的AssumeRole接口的使用，需要在RAM中创建和管理角色</strong></p>
-<p><strong>2.添加相关依赖</strong></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--添加aliyun-java-sdk的相关依赖 start--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-sts<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--添加aliyun-java-sdk的相关依赖 end--&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>3.配置文件中添加所需请求参数</strong></p>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#阿里云访问控制RAM子账户信息,需要登录阿里云控制台查看(Secret只在创建时可查看,需要做好备份)</span></span><br><span class="line"><span class="meta">aliyun.oss.accessKeyId</span>=<span class="string">#你的accessKeyId</span></span><br><span class="line"><span class="meta">aliyun.oss.accessKeySecret</span>=<span class="string">#你的accessKeySecret</span></span><br><span class="line"><span class="comment">#角色ID，在角色中进行授权，获取相应的权限</span></span><br><span class="line"><span class="meta">aliyun.sts.roleArn</span>=<span class="string">#你的roleArn</span></span><br><span class="line"><span class="comment">#指临时凭证的名称，一般来说建议使用不同的应用程序用户来区分。自定义(可不设置)</span></span><br><span class="line"><span class="meta">aliyun.sts.roleSessionName</span>=<span class="string">test</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>4.示例代码</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取Token返回结果</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: young</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2018年12月04日 13:56</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StsTokenVO</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 访问密钥标识</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String accessKeyId;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 访问密钥</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String accessKeySecret;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 安全令牌</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String securityToken;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StsTokenServiceImpl</span> <span class="keyword">implements</span> <span class="title">StsTokenService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(StsTokenServiceImpl<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.oss.accessKeyId&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String accessKeyId;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.oss.accessKeySecret&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String accessKeySecret;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.sts.roleArn&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String roleArn;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.sts.roleSessionName&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String roleSessionName;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * token失效时间，单位秒(不设置默认1小时,这里设置5分钟)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">// private static final Long durationSeconds= 300L;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String ENDPOINT = <span class="string">"sts.aliyuncs.com"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取STStoken接口</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>:</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>: StsTokenVO</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span>: young</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span>: 2018/12/4 13:59</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StsTokenVO <span class="title">getStsToken</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StsTokenVO tokenVO = <span class="keyword">new</span> StsTokenVO();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 添加endpoint（直接使用STS endpoint，前两个参数留空，无需添加region ID）</span></span><br><span class="line">            DefaultProfile.addEndpoint(<span class="string">""</span>, <span class="string">""</span>, <span class="string">"Sts"</span>, ENDPOINT);</span><br><span class="line">            <span class="comment">// 构造default profile（参数留空，无需添加region ID）</span></span><br><span class="line">            IClientProfile profile = DefaultProfile.getProfile(<span class="string">""</span>, accessKeyId, accessKeySecret);</span><br><span class="line">            <span class="comment">// 用profile构造client</span></span><br><span class="line">            DefaultAcsClient client = <span class="keyword">new</span> DefaultAcsClient(profile);</span><br><span class="line">            <span class="keyword">final</span> AssumeRoleRequest request = <span class="keyword">new</span> AssumeRoleRequest();</span><br><span class="line">            request.setMethod(MethodType.POST);</span><br><span class="line">            request.setRoleArn(roleArn);</span><br><span class="line">            request.setRoleSessionName(roleSessionName);</span><br><span class="line">            <span class="comment">// request.setDurationSeconds(durationSeconds);</span></span><br><span class="line">            <span class="comment">// 针对该临时权限可以根据该属性赋予规则，格式为json，没有特殊要求，默认为空</span></span><br><span class="line">            <span class="comment">// request.setPolicy(policy); // Optional</span></span><br><span class="line">            <span class="keyword">final</span> AssumeRoleResponse response = client.getAcsResponse(request);</span><br><span class="line">            AssumeRoleResponse.Credentials credentials = response.getCredentials();</span><br><span class="line">            tokenVO.setAccessKeyId(credentials.getAccessKeyId());</span><br><span class="line">            tokenVO.setAccessKeySecret(credentials.getAccessKeySecret());</span><br><span class="line">            tokenVO.setSecurityToken(credentials.getSecurityToken());</span><br><span class="line">            <span class="keyword">return</span> tokenVO;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClientException e) &#123;</span><br><span class="line">            LOGGER.error(<span class="string">"获取阿里云STS临时授权权限失败，错误信息："</span> + e);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>代码实现</category>
-      </categories>
-      <tags>
-        <tag>阿里云</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Session过期时间</title>
-    <url>/2020/05/17/Session%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4/</url>
-    <content><![CDATA[<p><img src="https://oss.forestyoung.top/lighthouse-5286823_1920.jpg" alt=""></p>
-<a id="more"></a>
-
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>项目使用cookie和session实现用户认证，在使用过程中通过设置session的过期时间来达到超时自动退出登录的效果</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"> 		<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * session过期时间15分钟(session默认过期时间为半小时，这里设置15分钟与默认时间区分，防止时间混淆)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_TIME = <span class="number">15</span> * <span class="number">60</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用户登录</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> Forest</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2020/4/28 18:17</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"login"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultData <span class="title">login</span><span class="params">(HttpServletRequest request, @RequestBody UserDTO user)</span> </span>&#123;</span><br><span class="line">        ResultData resultData = userService.login(user);</span><br><span class="line">        <span class="keyword">if</span> (resultData.isSucceed()) &#123;</span><br><span class="line">            <span class="comment">// 登录后设置session过期时间半小时</span></span><br><span class="line">            HttpSession session = request.getSession();</span><br><span class="line">            session.setAttribute(<span class="string">"isLogin"</span>, <span class="string">"y"</span>);</span><br><span class="line">            session.setAttribute(<span class="string">"userName"</span>, user.getUserName());</span><br><span class="line">            session.setMaxInactiveInterval(MAX_TIME);</span><br><span class="line">            log.info(<span class="string">"用户:&#123;&#125;登录成功"</span>, user.getUserName());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultData;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>于是猜测是不是可以设置过期时间为0或负数来达到使session失效的效果，从而实现退出登录功能</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">session.setMaxInactiveInterval(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// 或者任意负数</span></span><br><span class="line">session.setMaxInactiveInterval(-<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
-<p>debug发现当调用完登出接口后，session依然存在</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 用户登出</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@author</span> Forest</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@date</span> 2020/5/17 5:36 下午</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@PostMapping</span>(<span class="string">"loginOut"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> ResultData <span class="title">loginOut</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">      HttpSession session = request.getSession();</span><br><span class="line">      log.info(<span class="string">"用户：&#123;&#125;登出"</span>, session.getAttribute(<span class="string">"userName"</span>));</span><br><span class="line">      session.setMaxInactiveInterval(<span class="number">0</span>);</span><br><span class="line">      <span class="keyword">return</span> ResultDataUtils.getSuccessResult(<span class="string">"登出成功"</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2>]]></content>
-      <categories>
-        <category>代码实现</category>
-      </categories>
-      <tags>
-        <tag>JavaWeb</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>开发问题合集</title>
     <url>/2020/05/16/%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/</url>
     <content><![CDATA[<p><img src="https://oss.forestyoung.top/tunnel-5122424_1920.jpg" alt=""></p>
@@ -923,6 +888,41 @@
       </categories>
       <tags>
         <tag>其它</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>获取阿里云临时授权访问STStoken</title>
+    <url>/2019/03/07/%E8%8E%B7%E5%8F%96%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%B4%E6%97%B6%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AESTStoken/</url>
+    <content><![CDATA[<p><img src="https://oss.forestyoung.top/%E8%8E%B7%E5%8F%96STStoken.jpg" alt=""></p>
+<a id="more"></a>
+
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a href="https://www.alibabacloud.com/help/zh/doc-detail/27364.htm?spm=a2c63.p38356.b99.35.5c778d840l5Eaw" target="_blank" rel="noopener">阿里云官方文档</a><br><a href="https://help.aliyun.com/document_detail/28788.html?spm=a2c4g.11186623.6.645.7f4a7905JfcrXA" target="_blank" rel="noopener">相关SDK</a></p>
+<h3 id="RAM-和-STS-介绍"><a href="#RAM-和-STS-介绍" class="headerlink" title="RAM 和 STS 介绍"></a>RAM 和 STS 介绍</h3><blockquote>
+<p>阿里云权限管理机制包括访问控制（Resource Access Management，简称 RAM）和安全凭证管理（Security Token Service，简称 STS），可以根据需求使用不同权限的子账号来访问表格存储，也支持为用户提供访问的临时授权。使用RAM和STS能极大地提高管理的灵活性和安全性。</p>
+<p>RAM 的主要作用是控制账号系统的权限。通过使用 RAM 可以将在主账号的权限范围内创建子账号，给不同的子账号分配不同的权限，从而达到授权管理的目的。详情请参见<a href="https://www.alibabacloud.com/help/doc-detail/28627.htm" target="_blank" rel="noopener">访问控制产品帮忙文档</a>。</p>
+<p>STS 是一个安全凭证（Token）的管理系统，用来授予临时的访问权限，这样就可以通过 STS 来完成对于临时用户的访问授权。</p>
+</blockquote>
+<h3 id="STS临时授权访问"><a href="#STS临时授权访问" class="headerlink" title="STS临时授权访问"></a>STS临时授权访问</h3><blockquote>
+<p>RAM子账号都是可以长期正常使用的，发生泄露后如果无法及时解除权限，会非常危险。</p>
+<p>当开发者的 app 被用户使用之后，用户的数据要写入 ram-test-dev 这个实例。当 app 的用户数据很多时，要求能够安全地授权给众多的 app 用户上传数据，并且保证多个用户之间存储的隔离。</p>
+<p>类似这种场景需要临时访问权限，应该使用 STS 来完成。STS 可以指定复杂的策略来对特定的用户进行限制，仅提供最小的权限。</p>
+</blockquote>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p><strong>1.创建和管理角色STS的AssumeRole接口的使用，需要在RAM中创建和管理角色</strong></p>
+<p><strong>2.添加相关依赖</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--添加aliyun-java-sdk的相关依赖 start--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-sts<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--添加aliyun-java-sdk的相关依赖 end--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>3.配置文件中添加所需请求参数</strong></p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#阿里云访问控制RAM子账户信息,需要登录阿里云控制台查看(Secret只在创建时可查看,需要做好备份)</span></span><br><span class="line"><span class="meta">aliyun.oss.accessKeyId</span>=<span class="string">#你的accessKeyId</span></span><br><span class="line"><span class="meta">aliyun.oss.accessKeySecret</span>=<span class="string">#你的accessKeySecret</span></span><br><span class="line"><span class="comment">#角色ID，在角色中进行授权，获取相应的权限</span></span><br><span class="line"><span class="meta">aliyun.sts.roleArn</span>=<span class="string">#你的roleArn</span></span><br><span class="line"><span class="comment">#指临时凭证的名称，一般来说建议使用不同的应用程序用户来区分。自定义(可不设置)</span></span><br><span class="line"><span class="meta">aliyun.sts.roleSessionName</span>=<span class="string">test</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>4.示例代码</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取Token返回结果</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: young</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2018年12月04日 13:56</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StsTokenVO</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 访问密钥标识</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String accessKeyId;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 访问密钥</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String accessKeySecret;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 安全令牌</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String securityToken;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StsTokenServiceImpl</span> <span class="keyword">implements</span> <span class="title">StsTokenService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(StsTokenServiceImpl<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.oss.accessKeyId&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String accessKeyId;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.oss.accessKeySecret&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String accessKeySecret;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.sts.roleArn&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String roleArn;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aliyun.sts.roleSessionName&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String roleSessionName;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * token失效时间，单位秒(不设置默认1小时,这里设置5分钟)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">// private static final Long durationSeconds= 300L;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String ENDPOINT = <span class="string">"sts.aliyuncs.com"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取STStoken接口</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>:</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>: StsTokenVO</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span>: young</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span>: 2018/12/4 13:59</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StsTokenVO <span class="title">getStsToken</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StsTokenVO tokenVO = <span class="keyword">new</span> StsTokenVO();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 添加endpoint（直接使用STS endpoint，前两个参数留空，无需添加region ID）</span></span><br><span class="line">            DefaultProfile.addEndpoint(<span class="string">""</span>, <span class="string">""</span>, <span class="string">"Sts"</span>, ENDPOINT);</span><br><span class="line">            <span class="comment">// 构造default profile（参数留空，无需添加region ID）</span></span><br><span class="line">            IClientProfile profile = DefaultProfile.getProfile(<span class="string">""</span>, accessKeyId, accessKeySecret);</span><br><span class="line">            <span class="comment">// 用profile构造client</span></span><br><span class="line">            DefaultAcsClient client = <span class="keyword">new</span> DefaultAcsClient(profile);</span><br><span class="line">            <span class="keyword">final</span> AssumeRoleRequest request = <span class="keyword">new</span> AssumeRoleRequest();</span><br><span class="line">            request.setMethod(MethodType.POST);</span><br><span class="line">            request.setRoleArn(roleArn);</span><br><span class="line">            request.setRoleSessionName(roleSessionName);</span><br><span class="line">            <span class="comment">// request.setDurationSeconds(durationSeconds);</span></span><br><span class="line">            <span class="comment">// 针对该临时权限可以根据该属性赋予规则，格式为json，没有特殊要求，默认为空</span></span><br><span class="line">            <span class="comment">// request.setPolicy(policy); // Optional</span></span><br><span class="line">            <span class="keyword">final</span> AssumeRoleResponse response = client.getAcsResponse(request);</span><br><span class="line">            AssumeRoleResponse.Credentials credentials = response.getCredentials();</span><br><span class="line">            tokenVO.setAccessKeyId(credentials.getAccessKeyId());</span><br><span class="line">            tokenVO.setAccessKeySecret(credentials.getAccessKeySecret());</span><br><span class="line">            tokenVO.setSecurityToken(credentials.getSecurityToken());</span><br><span class="line">            <span class="keyword">return</span> tokenVO;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClientException e) &#123;</span><br><span class="line">            LOGGER.error(<span class="string">"获取阿里云STS临时授权权限失败，错误信息："</span> + e);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>代码实现</category>
+      </categories>
+      <tags>
+        <tag>阿里云</tag>
       </tags>
   </entry>
   <entry>
