@@ -4,7 +4,7 @@ date: 2021-04-02 17:08:35
 tags:
 ---
 
-![](https://oss.forestyoung.top/leaves-5610361_1920.png)
+![](https://oss.forestyoung.top/freedom-4737919_1920.jpg)
 
 <!--more-->
 
