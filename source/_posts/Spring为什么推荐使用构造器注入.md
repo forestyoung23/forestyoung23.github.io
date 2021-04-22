@@ -38,3 +38,5 @@ Spring常用的三种注入方式分别是：
 
 https://www.cnblogs.com/joemsu/p/7688307.html
 
+https://spring.io/blog/2007/07/11/setter-injection-versus-constructor-injection-and-the-use-of-required/
+
